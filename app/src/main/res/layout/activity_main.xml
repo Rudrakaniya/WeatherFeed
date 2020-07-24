@@ -21,15 +21,6 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/img"
-            android:layout_width="75dp"
-            android:layout_height="69dp"
-            android:contentDescription="TODO"
-            android:scaleType="fitXY"
-            android:src="@mipmap/copy_arrowjpg"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvText"
@@ -46,19 +37,27 @@
             tools:ignore="MissingConstraints" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="50dp"
+        android:layout_height="45dp"
+        android:contentDescription="TODO"
+        android:src="@mipmap/icon_src"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/navigationDrawer"
         android:layout_width="240dp"
         android:layout_height="0dp"
-        android:background="@color/colorPrimaryDark"
-        android:orientation="horizontal"
-        android:padding="16dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBar">
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLayout"/>
 
-    </LinearLayout>
 
-
+    
+    
+    
 </androidx.constraintlayout.motion.widget.MotionLayout>
