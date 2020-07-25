@@ -31,11 +31,11 @@
 
 
         <Constraint
-            android:layout_height="45dp"
+            android:layout_height="32dp"
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintBottom_toBottomOf="@+id/textViewLayout"
             motion:layout_constraintLeft_toLeftOf="parent"
-            android:layout_width="50dp"
+            android:layout_width="32dp"
             android:id="@+id/img"
             android:rotation="180"
             android:layout_marginLeft="16dp" />
