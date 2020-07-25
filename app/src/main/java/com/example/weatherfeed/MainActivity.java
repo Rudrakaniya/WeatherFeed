@@ -43,9 +43,10 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (!isDrawerOpen) {
             super.onBackPressed();
-            return;
+        } else {
+            mMotionLayout.transitionToStart();
+            isDrawerOpen = false;
         }
-        mMotionLayout.transitionToStart();
-        isDrawerOpen = false;
+
     }
 }
