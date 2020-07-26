@@ -8,6 +8,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -85,13 +86,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Add an OnClickListener to the changeCityButton here:
+        changeCityButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(MainActivity.this, ChangeCityController.class);
+
+                // Using startActivityForResult since we just get back the city name.
+                // Providing an arbitrary request code to check against later.
+                startActivityForResult(myIntent, NEW_CITY_CODE);
+            }
+        });
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         Log.d("WeatherApp", "onResume() called");
-        if (mUseLocation) getWeatherForCurrentLocation();
+        Intent myIntent = getIntent();
+        String city = myIntent.getStringExtra("City");
+
+        if (city != null){
+            getWeatherForNewCity(city);
+        }else
+        {
+            getWeatherForCurrentLocation();
+        }
+
     }
 
     private void getWeatherForNewCity(String city) {
