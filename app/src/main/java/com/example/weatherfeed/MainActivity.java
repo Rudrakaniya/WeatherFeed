@@ -41,9 +41,9 @@ public class MainActivity extends AppCompatActivity {
 
     final int REQUEST_CODE = 123;
     final int NEW_CITY_CODE = 456;
-
+  
     final String WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather";
-    final String APP_ID = "8ddd9e61267c0854ea44d8f0e349c731";
+    final String APP_ID = "8ddd9e61267c0854ea44d8cccf0e349c731";
 
     final long MIN_TIME = 5000;
     final float MIN_DISTANCE = 1000;
@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("WeatherApp", "onResume() called");
         Intent myIntent = getIntent();
         String city = myIntent.getStringExtra("City");
+        Log.d("WeatherApp", "  City name is = " + myIntent.getStringExtra("City"));
 
         if (city != null){
             getWeatherForNewCity(city);

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -25,6 +26,15 @@ public class ChangeCityController extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Go back and destroy the ChangeCityController
+                String newCity = editTextField.getText().toString();
+                Intent newCityIntent = new Intent(ChangeCityController.this, MainActivity.class);
+
+                // Adds what was entered in the EditText as an extra to the intent.
+                newCityIntent.putExtra("City", newCity);
+
+                // We started this activity for a result, so now we are setting the result.
+                setResult(Activity.RESULT_OK, newCityIntent);
+                Log.d("WeatherApp", "  City name after EditText is = " + newCity);
                 finish();
             }
         });
@@ -43,6 +53,7 @@ public class ChangeCityController extends AppCompatActivity {
 
                 // We started this activity for a result, so now we are setting the result.
                 setResult(Activity.RESULT_OK, newCityIntent);
+                Log.d("WeatherApp", "  City name after EditText is = " + newCity);
 
                 // This destroys the ChangeCityController.
                 finish();
