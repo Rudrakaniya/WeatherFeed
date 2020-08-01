@@ -57,6 +57,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textViewLayout" />
 
+
+    <LinearLayout
+        android:id="@+id/locationButtonLayout"
+        android:layout_width="36dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
+        android:elevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imgLocation_A"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="16dp"
+        android:background="?android:attr/actionBarItemBackground"
+        android:contentDescription="TODO"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/location_icon_a"
+        app:layout_constraintEnd_toEndOf="@+id/textViewLayout"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imgLocation_B"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
+        android:background="?android:attr/actionBarItemBackground"
+        android:contentDescription="TODO"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/location_icon_b"
+        app:layout_constraintEnd_toEndOf="@+id/textViewLayout"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCard"
         android:layout_width="match_parent"
