@@ -127,13 +127,13 @@
             app:layout_constraintBottom_toTopOf="@+id/guideline2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/commingSoonTextView"/>
+            app:layout_constraintTop_toBottomOf="@+id/settingsTextView"/>
 
         <TextView
-            android:id="@+id/commingSoonTextView"
+            android:id="@+id/settingsTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Comming Soon"
+            android:text="Settings"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/aboutUsTextView"

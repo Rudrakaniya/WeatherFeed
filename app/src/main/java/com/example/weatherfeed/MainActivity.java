@@ -60,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
     final String LOCATION_PROVIDER = LocationManager.GPS_PROVIDER;
     LocationManager mLocationManager;
     LocationListener mLocationListener;
+    String city;
+
 
     public static final String MyPREFERENCES = "MyPrefs";
     SharedPreferences sharedPreferences;
@@ -70,10 +72,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        String city = sharedPreferences.getString("cityName", "");
+        city = sharedPreferences.getString("cityName", "");
         Log.d(TAG, "onCreate: city" + city);
-        if (!city.isEmpty())
-            getWeatherForNewCity(city);
+
 
         // Linking the elements in the layout to Java code.
         mCityLabel = findViewById(R.id.locationTV);
@@ -106,16 +107,18 @@ public class MainActivity extends AppCompatActivity {
                 // Using startActivityForResult since we just get back the city name.
                 // Providing an arbitrary request code to check against later.
                 startActivityForResult(myIntent, NEW_CITY_CODE);
+                mUseLocation = false;
             }
         });
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 2) {
-            String city = data.getStringExtra("City");
+            city = data.getStringExtra("City");
             Log.d(TAG, "onActivityResult: " + city);
             if (city != null) {
                 getWeatherForNewCity(city);
@@ -125,6 +128,18 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(LOGCAT_TAG, "onResume() called");
+        Log.d(LOGCAT_TAG, "onResume: ");
+
+        if (mUseLocation) getWeatherForCurrentLocation();
+    }
+
+
+
 
 //    @Override
 //    protected void onResume() {
@@ -149,7 +164,6 @@ public class MainActivity extends AppCompatActivity {
     private void getWeatherForCurrentLocation() {
         Log.d(LOGCAT_TAG, "Getting weather for current location");
         mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
         mLocationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
@@ -250,6 +264,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Log.d(LOGCAT_TAG, "Status code " + statusCode);
                 Log.d(LOGCAT_TAG, "Here's what we got instead " + response.toString());
+
             }
 
         });

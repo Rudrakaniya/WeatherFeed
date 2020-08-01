@@ -33,7 +33,10 @@ public class ChangeCityController extends AppCompatActivity {
             public void onClick(View v) {
                 String newCity = editTextField.getText().toString();
                 Intent newCityIntent = new Intent(ChangeCityController.this, MainActivity.class);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
 
+                editor.putString("cityName", newCity);
+                editor.commit();
                 // Adds what was entered in the EditText as an extra to the intent.
                 newCityIntent.putExtra("City", newCity);
 
@@ -77,7 +80,10 @@ public class ChangeCityController extends AppCompatActivity {
     public void onBackPressed() {
         String newCity = editTextField.getText().toString();
         Intent newCityIntent = new Intent(ChangeCityController.this, MainActivity.class);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
 
+        editor.putString("cityName", newCity);
+        editor.commit();
         // Adds what was entered in the EditText as an extra to the intent.
         newCityIntent.putExtra("City", newCity);
 
