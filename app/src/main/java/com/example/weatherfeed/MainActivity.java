@@ -1,6 +1,7 @@
 package com.example.weatherfeed;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.motion.widget.MotionLayout;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -9,6 +10,7 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -40,10 +42,10 @@ public class MainActivity extends AppCompatActivity {
     final String LOGCAT_TAG = "WeatherApp";
 
     final int REQUEST_CODE = 123;
-    final int NEW_CITY_CODE = 456;
-  
+    final int NEW_CITY_CODE = 2;
+
     final String WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather";
-    final String APP_ID = "8ddd9e61267c0854ea44d8cccf0e349c731";
+    final String APP_ID = "8ddd9e61267c0854ea44d8f0e349c731";
 
     final long MIN_TIME = 5000;
     final float MIN_DISTANCE = 1000;
@@ -59,10 +61,19 @@ public class MainActivity extends AppCompatActivity {
     LocationManager mLocationManager;
     LocationListener mLocationListener;
 
+    public static final String MyPREFERENCES = "MyPrefs";
+    SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        String city = sharedPreferences.getString("cityName", "");
+        Log.d(TAG, "onCreate: city" + city);
+        if (!city.isEmpty())
+            getWeatherForNewCity(city);
 
         // Linking the elements in the layout to Java code.
         mCityLabel = findViewById(R.id.locationTV);
@@ -100,21 +111,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d("WeatherApp", "onResume() called");
-        Intent myIntent = getIntent();
-        String city = myIntent.getStringExtra("City");
-        Log.d("WeatherApp", "  City name is = " + myIntent.getStringExtra("City"));
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-        if (city != null){
-            getWeatherForNewCity(city);
-        }else
-        {
-            getWeatherForCurrentLocation();
+        if (requestCode == 2) {
+            String city = data.getStringExtra("City");
+            Log.d(TAG, "onActivityResult: " + city);
+            if (city != null) {
+                getWeatherForNewCity(city);
+            } else {
+                getWeatherForCurrentLocation();
+            }
+
         }
-
     }
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        Log.d("WeatherApp", "onResume() called");
+//        Intent myIntent = getIntent();
+//        String city = myIntent.getStringExtra("City");
+//        Log.d("WeatherApp", "  City name is = " + myIntent.getStringExtra("City"));
+//
+//
+//    }
 
     private void getWeatherForNewCity(String city) {
         Log.d(LOGCAT_TAG, "Getting weather for new city");
