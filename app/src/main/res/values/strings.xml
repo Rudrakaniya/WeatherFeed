@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Weather feed</string>
     <string name="locationString">Location</string>
+    <string name="change_city">Change City</string>
 </resources>

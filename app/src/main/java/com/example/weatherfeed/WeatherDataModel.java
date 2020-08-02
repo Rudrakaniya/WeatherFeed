@@ -7,6 +7,7 @@ public class WeatherDataModel {
 
     private String mTemperature;
     private String mCity;
+    private String mTimeZone;
     private String mIconName;
     private int mCondition;
 
@@ -15,6 +16,7 @@ public class WeatherDataModel {
         try {
             WeatherDataModel weatherData = new WeatherDataModel();
 
+            weatherData.mTimeZone = jsonObject.getString("timezone");
             weatherData.mCity = jsonObject.getString("name");
             weatherData.mCondition = jsonObject.getJSONArray("weather").getJSONObject(0).getInt("id");
             weatherData.mIconName = updateWeatherIcon(weatherData.mCondition);
@@ -69,6 +71,10 @@ public class WeatherDataModel {
 
     public String getCity() {
         return mCity;
+    }
+
+    public String getTimeZone() {
+        return mTimeZone;
     }
 
     public String getIconName() {

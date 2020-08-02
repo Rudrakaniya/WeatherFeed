@@ -12,6 +12,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ChangeCityController extends AppCompatActivity {
@@ -24,7 +25,7 @@ public class ChangeCityController extends AppCompatActivity {
         setContentView(R.layout.change_city_layout);
 
         editTextField = findViewById(R.id.queryET);
-        ImageButton backButton = findViewById(R.id.backButton);
+        ImageView backButton = findViewById(R.id.backButton);
 
      sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 

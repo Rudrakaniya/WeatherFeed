@@ -16,11 +16,13 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.text.format.Time;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +31,11 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -55,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
     TextView mCityLabel;
     ImageView mWeatherImage;
     TextView mTemperatureLabel;
+    TextView mDateTextView;
 
     // Location provider
     final String LOCATION_PROVIDER = LocationManager.GPS_PROVIDER;
@@ -71,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         city = sharedPreferences.getString("cityName", "");
         Log.d(TAG, "onCreate: city" + city);
@@ -79,11 +88,32 @@ public class MainActivity extends AppCompatActivity {
         // Linking the elements in the layout to Java code.
         mCityLabel = findViewById(R.id.locationTV);
         mWeatherImage = findViewById(R.id.weatherSymbolIV);
+        mDateTextView = findViewById(R.id.dateTextView);
         mTemperatureLabel = findViewById(R.id.tempTV);
-        Button changeCityButton = findViewById(R.id.changeCityButton);
+        LinearLayout changeCityButton = findViewById(R.id.locationButtonLayout);
 
         mMotionLayout = findViewById(R.id.motion_layout);
         mImageButton = findViewById(R.id.img);
+
+        //Get date and time, don't get excited lol!! its not a reallife wali date. hold your horses kido!!
+        Date currentTime = Calendar.getInstance().getTime();
+        String choice = "01";
+
+
+        SimpleDateFormat df = new SimpleDateFormat("MM");
+        String month = df.format(currentTime.getTime());
+
+        df = new SimpleDateFormat("dd");
+        int intDate = Integer.parseInt(df.format(currentTime.getTime()));
+
+        df = new SimpleDateFormat("HH");
+        int intHour = Integer.parseInt(df.format(currentTime.getTime()));
+        intHour %= 12;
+        String hours = Integer.toString(intHour);
+
+        df = new SimpleDateFormat("mm");
+        String minutes = df.format(currentTime.getTime());
+
 
         mImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,14 +132,62 @@ public class MainActivity extends AppCompatActivity {
         changeCityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, ChangeCityController.class);
+//                mMotionLayout.transitionToEnd();
+//                mMotionLayout.transitionToStart();
 
+                Intent myIntent = new Intent(MainActivity.this, ChangeCityController.class);
+                Log.d(LOGCAT_TAG, "onClick: Change City Button Pressed");
                 // Using startActivityForResult since we just get back the city name.
                 // Providing an arbitrary request code to check against later.
                 startActivityForResult(myIntent, NEW_CITY_CODE);
                 mUseLocation = false;
             }
         });
+    }
+
+    protected String getMonthName(String choice) {
+
+        switch (choice) {
+
+            case "01":
+                return "January";
+
+            case "02":
+                return "February";
+
+            case "03":
+                return "March";
+
+            case "04":
+                return "April";
+
+            case "05":
+                return "May";
+
+            case "06":
+                return "June";
+
+            case "07":
+                return "July";
+
+            case "08":
+                return "August";
+
+            case "09":
+                return "September";
+
+            case "10":
+                return "October";
+
+            case "11":
+                return "November";
+
+            case "12":
+                return "December";
+
+            default:
+                return "Null";
+        }
     }
 
 
@@ -137,8 +215,6 @@ public class MainActivity extends AppCompatActivity {
 
         if (mUseLocation) getWeatherForCurrentLocation();
     }
-
-
 
 
 //    @Override
@@ -271,6 +347,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateUI(WeatherDataModel weather) {
+//        TimeZone defaultTimeZone = TimeZone.getDefault();
+//        int timeZone = Integer.parseInt(weather.getTimeZone());
+//
+//        if (timeZone < 0) {
+//        Date date = new Date();
+//        date.setTime();
+//        } else {
+
+//        }
+
+//        mDateTextView.setText("TimeZone   " + defaultTimeZone.getDisplayName(false, TimeZone.SHORT) + " " + (float) timeZone / 3600);
+
+
         mTemperatureLabel.setText(weather.getTemperature());
         mCityLabel.setText(weather.getCity());
 

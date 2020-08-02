@@ -11,6 +11,7 @@
 <!--        <OnClick motion:targetId="@+id/img" />-->
     </Transition>
 
+
     <ConstraintSet android:id="@+id/start">
 
         <Constraint
@@ -37,5 +38,6 @@
             android:rotation="180"
             android:layout_marginLeft="16dp" />
     </ConstraintSet>
+
 
 </MotionScene>
