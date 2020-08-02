@@ -9,6 +9,8 @@ public class WeatherDataModel {
     private String mCity;
     private String mTimeZone;
     private String mIconName;
+    private String mLat;
+    private String mLon;
     private int mCondition;
 
     public static WeatherDataModel fromJson(JSONObject jsonObject) {
@@ -20,6 +22,8 @@ public class WeatherDataModel {
             weatherData.mCity = jsonObject.getString("name");
             weatherData.mCondition = jsonObject.getJSONArray("weather").getJSONObject(0).getInt("id");
             weatherData.mIconName = updateWeatherIcon(weatherData.mCondition);
+            weatherData.mLat = jsonObject.getJSONObject("coord").getString("lat");
+            weatherData.mLon = jsonObject.getJSONObject("coord").getString("lon");
 
             double tempResult = jsonObject.getJSONObject("main").getDouble("temp") - 273.15;
             int roundedValue = (int) Math.rint(tempResult);
@@ -63,6 +67,14 @@ public class WeatherDataModel {
         }
 
         return "dunno";
+    }
+
+    public String getLat() {
+        return mLat;
+    }
+
+    public String getLon() {
+        return mLon;
     }
 
     public String getTemperature() {

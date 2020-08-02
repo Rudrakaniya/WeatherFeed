@@ -215,7 +215,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(LOGCAT_TAG, "onResume() called");
         Log.d(LOGCAT_TAG, "onResume: ");
 
-//        if (mUseLocation) getWeatherForCurrentLocation1();
+        if (mUseLocation) getWeatherForCurrentLocation1();
     }
 
 
@@ -324,7 +324,7 @@ public class MainActivity extends AppCompatActivity {
                 params.put("lon", longitude);
                 params.put("exclude", "minutely,hourly");
                 params.put("appid", APP_ID);
-                letsDoSomeNetworking(params);
+                letsDoSomeNetworkingForOCAPI(params);
             }
 
             @Override
@@ -462,6 +462,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateUIForOCAPI(WeatherDataModelForOCAPI weather) {
+        Log.d(LOGCAT_TAG, "updateUIForOCAPI: lat "+ weather.getLatitude());
+        Log.d(LOGCAT_TAG, "updateUIForOCAPI: lon "+ weather.getLongitude());
 
     }
 

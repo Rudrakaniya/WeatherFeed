@@ -5,10 +5,6 @@ import org.json.JSONObject;
 
 public class WeatherDataModelForOCAPI {
 
-    private String mCity;
-    private String mIconName;
-    private int mCondition;
-
     private String mLatitude;
     private String mLongitude;
     private String mTimeZone;
@@ -127,10 +123,6 @@ public class WeatherDataModelForOCAPI {
             weatherData.m5ForecastWeatherDescription = jsonObject.getJSONArray("daily").getJSONObject(4).getJSONArray("weather").getJSONObject(0).getString("description");
             weatherData.m5ForecastIcon = jsonObject.getJSONArray("daily").getJSONObject(4).getJSONArray("weather").getJSONObject(0).getString("icon");
 
-            weatherData.mTimeZone = jsonObject.getString("timezone");
-            weatherData.mCity = jsonObject.getString("name");
-            weatherData.mCondition = jsonObject.getJSONArray("weather").getJSONObject(0).getInt("id");
-            weatherData.mIconName = updateWeatherIcon(weatherData.mCondition);
 
             return weatherData;
 
@@ -171,9 +163,6 @@ public class WeatherDataModelForOCAPI {
         return "dunno";
     }
 
-    public int getCondition() {
-        return mCondition;
-    }
 
     public String getLatitude() {
         return mLatitude;
