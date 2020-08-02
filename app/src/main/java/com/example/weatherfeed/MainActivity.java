@@ -54,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
     final String WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather";
     final String APP_ID = "8ddd9e61267c0854ea44d8f0e349c731";
 
+    final String ONE_CALL_API_URL = "https://api.openweathermap.org/data/2.5/onecall";
+
     final long MIN_TIME = 5000;
     final float MIN_DISTANCE = 1000;
 
@@ -213,7 +215,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(LOGCAT_TAG, "onResume() called");
         Log.d(LOGCAT_TAG, "onResume: ");
 
-        if (mUseLocation) getWeatherForCurrentLocation();
+//        if (mUseLocation) getWeatherForCurrentLocation1();
     }
 
 
@@ -255,6 +257,72 @@ public class MainActivity extends AppCompatActivity {
                 RequestParams params = new RequestParams();
                 params.put("lat", latitude);
                 params.put("lon", longitude);
+                params.put("appid", APP_ID);
+                letsDoSomeNetworking(params);
+            }
+
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+                // Log statements to help you debug your app.
+                Log.d(LOGCAT_TAG, "onStatusChanged() callback received. Status: " + status);
+                Log.d(LOGCAT_TAG, "2 means AVAILABLE, 1: TEMPORARILY_UNAVAILABLE, 0: OUT_OF_SERVICE");
+            }
+
+            @Override
+            public void onProviderEnabled(String provider) {
+                Log.d(LOGCAT_TAG, "onProviderEnabled() callback received. Provider: " + provider);
+            }
+
+            @Override
+            public void onProviderDisabled(String provider) {
+                Log.d(LOGCAT_TAG, "onProviderDisabled() callback received. Provider: " + provider);
+            }
+        };
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
+            return;
+        }
+
+        // Some additional log statements to help you debug
+        Log.d(LOGCAT_TAG, "Location Provider used: "
+                + mLocationManager.getProvider(LOCATION_PROVIDER).getName());
+        Log.d(LOGCAT_TAG, "Location Provider is enabled: "
+                + mLocationManager.isProviderEnabled(LOCATION_PROVIDER));
+        Log.d(LOGCAT_TAG, "Last known location (if any): "
+                + mLocationManager.getLastKnownLocation(LOCATION_PROVIDER));
+        Log.d(LOGCAT_TAG, "Requesting location updates");
+
+        mLocationManager.requestLocationUpdates(LOCATION_PROVIDER, MIN_TIME, MIN_DISTANCE, mLocationListener);
+
+    }
+
+    private void getWeatherForCurrentLocation1() {
+        Log.d(LOGCAT_TAG, "Getting weather for current location");
+        mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        mLocationListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+
+                Log.d(LOGCAT_TAG, "onLocationChanged() callback received");
+
+                String longitude = String.valueOf(location.getLongitude());
+                String latitude = String.valueOf(location.getLatitude());
+
+                Log.d(LOGCAT_TAG, "longitude is: " + longitude);
+                Log.d(LOGCAT_TAG, "latitude is: " + latitude);
+
+                RequestParams params = new RequestParams();
+                params.put("lat", latitude);
+                params.put("lon", longitude);
+                params.put("exclude", "minutely,hourly");
                 params.put("appid", APP_ID);
                 letsDoSomeNetworking(params);
             }
@@ -346,6 +414,32 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void letsDoSomeNetworkingForOCAPI(RequestParams params) {
+
+        AsyncHttpClient client = new AsyncHttpClient();
+
+        client.get(ONE_CALL_API_URL, params, new JsonHttpResponseHandler() {
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                Log.d(LOGCAT_TAG, "Success! JSON: " + response.toString());
+                WeatherDataModelForOCAPI weatherDataForOCAPI = WeatherDataModelForOCAPI.fromJson(response);
+                updateUIForOCAPI(weatherDataForOCAPI);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable e, JSONObject response) {
+
+                Log.e(LOGCAT_TAG, "Fail " + e.toString());
+                Toast.makeText(MainActivity.this, "Request Failed", Toast.LENGTH_SHORT).show();
+
+                Log.d(LOGCAT_TAG, "Status code " + statusCode);
+                Log.d(LOGCAT_TAG, "Here's what we got instead " + response.toString());
+
+            }
+
+        });
+    }
     private void updateUI(WeatherDataModel weather) {
 //        TimeZone defaultTimeZone = TimeZone.getDefault();
 //        int timeZone = Integer.parseInt(weather.getTimeZone());
@@ -360,6 +454,14 @@ public class MainActivity extends AppCompatActivity {
 //        mDateTextView.setText("TimeZone   " + defaultTimeZone.getDisplayName(false, TimeZone.SHORT) + " " + (float) timeZone / 3600);
 
 
+        mTemperatureLabel.setText(weather.getTemperature());
+        mCityLabel.setText(weather.getCity());
+
+        int resourceID = getResources().getIdentifier(weather.getIconName(), "drawable", getPackageName());
+        mWeatherImage.setImageResource(resourceID);
+    }
+
+    private void updateUIForOCAPI(WeatherDataModelForOCAPI weather) {
         mTemperatureLabel.setText(weather.getTemperature());
         mCityLabel.setText(weather.getCity());
 
