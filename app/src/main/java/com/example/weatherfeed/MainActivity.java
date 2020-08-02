@@ -462,11 +462,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateUIForOCAPI(WeatherDataModelForOCAPI weather) {
-        mTemperatureLabel.setText(weather.getTemperature());
-        mCityLabel.setText(weather.getCity());
 
-        int resourceID = getResources().getIdentifier(weather.getIconName(), "drawable", getPackageName());
-        mWeatherImage.setImageResource(resourceID);
     }
 
     @Override
