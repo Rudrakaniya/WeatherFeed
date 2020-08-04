@@ -167,7 +167,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView"
                 android:layout_width="match_parent"
@@ -217,7 +216,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView1"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="150dp"
                 android:layout_margin="16dp"
                 app:cardBackgroundColor="@color/colorWhiteGrey"
                 app:cardCornerRadius="8dp"
@@ -225,45 +224,199 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/materialCardView">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="July 25, 3:14 PM"
-                    android:textColor="@color/colorPrimaryDark" />
-
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="32dp"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent">
 
-                    <TextView
+                    <LinearLayout
+                        android:id="@+id/weekDay1"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:text="16°C"
-                        android:textSize="32dp" />
+                        android:layout_height="0dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/week_day_layout"
+                        android:orientation="vertical"
+                        android:padding="5dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/weekDay2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/cloud_temp" />
+                        <TextView
+                            android:layout_width="32sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="MON"
+                            android:textColor="@color/colorPrimaryDark" />
 
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_weight="1" />
 
-                </LinearLayout>
+                        <TextView
+                            android:layout_width="32sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="16°C" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/weekDay2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/week_day_layout"
+                        android:orientation="vertical"
+                        android:padding="5dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/weekDay3"
+                        app:layout_constraintStart_toEndOf="@+id/weekDay1"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_width="32sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="TUE"
+                            android:textColor="@color/colorPrimaryDark" />
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:layout_width="32sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="16°C" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/weekDay3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/week_day_layout"
+                        android:orientation="vertical"
+                        android:padding="5dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/weekDay4"
+                        app:layout_constraintStart_toEndOf="@+id/weekDay2"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_width="32sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="WED"
+                            android:textColor="@color/colorPrimaryDark" />
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:layout_width="32sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="16°C" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/weekDay4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/week_day_layout"
+                        android:orientation="vertical"
+                        android:padding="5dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/weekDay5"
+                        app:layout_constraintStart_toEndOf="@+id/weekDay3"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_width="32sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="THU"
+                            android:textColor="@color/colorPrimaryDark" />
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:layout_width="32sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="16°C" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/weekDay5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/week_day_layout"
+                        android:orientation="vertical"
+                        android:padding="5dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/weekDay4"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_width="32sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="FRI"
+                            android:textColor="@color/colorPrimaryDark" />
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:layout_width="32sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="16°C" />
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView2"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="420dp"
                 android:layout_margin="16dp"
                 app:cardBackgroundColor="@color/colorWhiteGrey"
                 app:cardCornerRadius="8dp"
@@ -271,38 +424,22 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/materialCardView1">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="July 25, 3:14 PM"
-                    android:textColor="@color/colorPrimaryDark" />
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="32dp"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:text="16°C"
-                        android:textSize="32dp" />
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Weather today in Jammu, IN"
+                        android:textSize="22sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/cloud_temp" />
-
-
-                </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.card.MaterialCardView>
 

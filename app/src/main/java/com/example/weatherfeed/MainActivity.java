@@ -89,9 +89,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Linking the elements in the layout to Java code.
         mCityLabel = findViewById(R.id.locationTV);
-        mWeatherImage = findViewById(R.id.weatherSymbolIV);
-        mDateTextView = findViewById(R.id.dateTextView);
-        mTemperatureLabel = findViewById(R.id.tempTV);
+//        mWeatherImage = findViewById(R.id.weatherSymbolIV);
+//        mDateTextView = findViewById(R.id.dateTextView);
+//        mTemperatureLabel = findViewById(R.id.tempTV);
         LinearLayout changeCityButton = findViewById(R.id.locationButtonLayout);
 
         mMotionLayout = findViewById(R.id.motion_layout);
@@ -440,6 +440,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
     }
+
     private void updateUI(WeatherDataModel weather) {
 //        TimeZone defaultTimeZone = TimeZone.getDefault();
 //        int timeZone = Integer.parseInt(weather.getTimeZone());
@@ -462,8 +463,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateUIForOCAPI(WeatherDataModelForOCAPI weather) {
-        Log.d(LOGCAT_TAG, "updateUIForOCAPI: lat "+ weather.getLatitude());
-        Log.d(LOGCAT_TAG, "updateUIForOCAPI: lon "+ weather.getLongitude());
+        Log.d(LOGCAT_TAG, "updateUIForOCAPI: lat " + weather.getLatitude());
+        Log.d(LOGCAT_TAG, "updateUIForOCAPI: lon " + weather.getLongitude());
 
     }
 
