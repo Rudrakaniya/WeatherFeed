@@ -13,10 +13,24 @@ public class WeatherDataModel {
     private String mLon;
     private int mCondition;
 
+    private String mCurrentDateAndTime;
+    private String mCurrentWeatherMain;
+    private String mCurrentWeatherDescription;
+    private String mCurrentMinTemp;
+    private String mCurrentMaxTemp;
+    private String mCountryName;
+
     public static WeatherDataModel fromJson(JSONObject jsonObject) {
 
         try {
             WeatherDataModel weatherData = new WeatherDataModel();
+
+            weatherData.mCurrentDateAndTime = jsonObject.getString("dt");
+            weatherData.mCurrentWeatherMain  = jsonObject.getJSONArray("weather").getJSONObject(0).getString("main");
+            weatherData.mCurrentWeatherDescription = jsonObject.getJSONArray("weather").getJSONObject(0).getString("description");
+            weatherData.mCurrentMinTemp = jsonObject.getJSONObject("main").getString("temp_min");
+            weatherData.mCurrentMaxTemp = jsonObject.getJSONObject("main").getString("temp_max");
+            weatherData.mCountryName = jsonObject.getJSONObject("sys").getString("country");
 
             weatherData.mTimeZone = jsonObject.getString("timezone");
             weatherData.mCity = jsonObject.getString("name");
@@ -93,4 +107,27 @@ public class WeatherDataModel {
         return mIconName;
     }
 
+    public String getCurrentDateAndTime() {
+        return mCurrentDateAndTime;
+    }
+
+    public String getCurrentWeatherMain() {
+        return mCurrentWeatherMain;
+    }
+
+    public String getCurrentWeatherDescription() {
+        return mCurrentWeatherDescription;
+    }
+
+    public String getCurrentMinTemp() {
+        return mCurrentMinTemp;
+    }
+
+    public String getCurrentMaxTemp() {
+        return mCurrentMaxTemp;
+    }
+
+    public String getCountryName() {
+        return mCountryName;
+    }
 }

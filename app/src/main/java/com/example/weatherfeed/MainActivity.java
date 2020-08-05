@@ -65,6 +65,22 @@ public class MainActivity extends AppCompatActivity {
     ImageView mWeatherImage;
     TextView mTemperatureLabel;
     TextView mDateTextView;
+    TextView mCurrentWeatherMainTV;
+    TextView mCurrentWeatherDescriptionTV;
+
+    //Weather Forecast layout
+    TextView mWeekDay1TV, mWeekDay2TV, mWeekDay3TV, mWeekDay4TV, mWeekDay5TV;
+    ImageView mWeekDay1IV, mWeekDay2IV, mWeekDay3IV, mWeekDay4IV, mWeekDay5IV;
+    TextView mWeekDay1TempTV, mWeekDay2TempTV, mWeekDay3TempTV, mWeekDay4TempTV, mWeekDay5TempTV;
+
+    //Sunset sunrise layout
+    TextView mSunriseTimeTextView, mSunsetTimeTextView;
+
+    //Weather Quote layout
+    TextView mWeatherQuoteTV;
+
+    //Detailed view layout
+    TextView mDetailViewLocationTV, mDetailViewTempTV, mWindSpeedTV, mHumidityPercentTV, mPressureHPATV, mCloudinessTV, mUvIndexTV, mVisibilityRangeTV;
 
     // Location provider
     final String LOCATION_PROVIDER = LocationManager.GPS_PROVIDER;
@@ -89,32 +105,51 @@ public class MainActivity extends AppCompatActivity {
 
         // Linking the elements in the layout to Java code.
         mCityLabel = findViewById(R.id.locationTV);
-//        mWeatherImage = findViewById(R.id.weatherSymbolIV);
-//        mDateTextView = findViewById(R.id.dateTextView);
-//        mTemperatureLabel = findViewById(R.id.tempTV);
+        mWeatherImage = findViewById(R.id.weatherSymbolIV);
+        mDateTextView = findViewById(R.id.dateTextView);
+        mTemperatureLabel = findViewById(R.id.tempTV);
+        mCurrentWeatherMainTV = findViewById(R.id.currentWeatherMain);
+        mCurrentWeatherDescriptionTV = findViewById(R.id.currentWeatherDescription);
         LinearLayout changeCityButton = findViewById(R.id.locationButtonLayout);
 
         mMotionLayout = findViewById(R.id.motion_layout);
         mImageButton = findViewById(R.id.img);
 
-        //Get date and time, don't get excited lol!! its not a reallife wali date. hold your horses kido!!
-        Date currentTime = Calendar.getInstance().getTime();
-        String choice = "01";
+        //Weather Forecast layout
+        mWeekDay1TV = findViewById(R.id.weekDay1TV);
+        mWeekDay2TV = findViewById(R.id.weekDay2TV);
+        mWeekDay3TV = findViewById(R.id.weekDay3TV);
+        mWeekDay4TV = findViewById(R.id.weekDay4TV);
+        mWeekDay5TV = findViewById(R.id.weekDay5TV);
 
+        mWeekDay1IV = findViewById(R.id.weekDay1IV);
+        mWeekDay2IV = findViewById(R.id.weekDay2IV);
+        mWeekDay3IV = findViewById(R.id.weekDay3IV);
+        mWeekDay4IV = findViewById(R.id.weekDay4IV);
+        mWeekDay5IV = findViewById(R.id.weekDay5IV);
 
-        SimpleDateFormat df = new SimpleDateFormat("MM");
-        String month = df.format(currentTime.getTime());
+        mWeekDay1TempTV = findViewById(R.id.weekDay1TempTV);
+        mWeekDay2TempTV = findViewById(R.id.weekDay2TempTV);
+        mWeekDay3TempTV = findViewById(R.id.weekDay3TempTV);
+        mWeekDay4TempTV = findViewById(R.id.weekDay4TempTV);
+        mWeekDay5TempTV = findViewById(R.id.weekDay5TempTV);
 
-        df = new SimpleDateFormat("dd");
-        int intDate = Integer.parseInt(df.format(currentTime.getTime()));
+        //Sunset sunrise layout
+        mSunriseTimeTextView = findViewById(R.id.sunriseTimeTextView);
+        mSunsetTimeTextView = findViewById(R.id.sunsetTimeTextView);
 
-        df = new SimpleDateFormat("HH");
-        int intHour = Integer.parseInt(df.format(currentTime.getTime()));
-        intHour %= 12;
-        String hours = Integer.toString(intHour);
+        //Weather Quote layout
+        mWeatherQuoteTV = findViewById(R.id.weatherQuoteTV);
 
-        df = new SimpleDateFormat("mm");
-        String minutes = df.format(currentTime.getTime());
+        //Detailed view layout
+        mDetailViewLocationTV = findViewById(R.id.detailViewLocationText);
+        mDetailViewTempTV =findViewById(R.id.detailViewTempText);
+        mWindSpeedTV = findViewById(R.id.windSpeedTextView);
+        mHumidityPercentTV = findViewById(R.id.humidityPercentTextView);
+        mPressureHPATV = findViewById(R.id.pressureHPATextView);
+        mCloudinessTV =findViewById(R.id.cloudinessTextView);
+        mUvIndexTV = findViewById(R.id.uvIndexTextView);
+        mVisibilityRangeTV = findViewById(R.id.visibilityRangeTextView);
 
 
         mImageButton.setOnClickListener(new View.OnClickListener() {
@@ -147,50 +182,50 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    protected String getMonthName(String choice) {
-
-        switch (choice) {
-
-            case "01":
-                return "January";
-
-            case "02":
-                return "February";
-
-            case "03":
-                return "March";
-
-            case "04":
-                return "April";
-
-            case "05":
-                return "May";
-
-            case "06":
-                return "June";
-
-            case "07":
-                return "July";
-
-            case "08":
-                return "August";
-
-            case "09":
-                return "September";
-
-            case "10":
-                return "October";
-
-            case "11":
-                return "November";
-
-            case "12":
-                return "December";
-
-            default:
-                return "Null";
-        }
-    }
+//    protected String getMonthName(String choice) {
+//
+//        switch (choice) {
+//
+//            case "01":
+//                return "January";
+//
+//            case "02":
+//                return "February";
+//
+//            case "03":
+//                return "March";
+//
+//            case "04":
+//                return "April";
+//
+//            case "05":
+//                return "May";
+//
+//            case "06":
+//                return "June";
+//
+//            case "07":
+//                return "July";
+//
+//            case "08":
+//                return "August";
+//
+//            case "09":
+//                return "September";
+//
+//            case "10":
+//                return "October";
+//
+//            case "11":
+//                return "November";
+//
+//            case "12":
+//                return "December";
+//
+//            default:
+//                return "Null";
+//        }
+//    }
 
 
     @Override
@@ -304,6 +339,50 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void letsDoSomeNetworking(RequestParams params) {
+
+        AsyncHttpClient client = new AsyncHttpClient();
+
+        client.get(WEATHER_URL, params, new JsonHttpResponseHandler() {
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                Log.d(LOGCAT_TAG, "Success! JSON: " + response.toString());
+                WeatherDataModel weatherData = WeatherDataModel.fromJson(response);
+                updateUI(weatherData);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable e, JSONObject response) {
+
+                Log.e(LOGCAT_TAG, "Fail " + e.toString());
+                Toast.makeText(MainActivity.this, "Request Failed", Toast.LENGTH_SHORT).show();
+
+                Log.d(LOGCAT_TAG, "Status code " + statusCode);
+                Log.d(LOGCAT_TAG, "Here's what we got instead " + response.toString());
+
+            }
+
+        });
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == REQUEST_CODE) {
+
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Log.d("WeatherApp", "onRequestPermissionsResult(): Permission granted!");
+                getWeatherForCurrentLocation();
+            } else {
+                Log.d("WeatherApp", "Permission denied =( ");
+            }
+        }
+
+    }
+
     private void getWeatherForCurrentLocation1() {
         Log.d(LOGCAT_TAG, "Getting weather for current location");
         mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -368,50 +447,6 @@ public class MainActivity extends AppCompatActivity {
 
         mLocationManager.requestLocationUpdates(LOCATION_PROVIDER, MIN_TIME, MIN_DISTANCE, mLocationListener);
 
-    }
-
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (requestCode == REQUEST_CODE) {
-
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Log.d("WeatherApp", "onRequestPermissionsResult(): Permission granted!");
-                getWeatherForCurrentLocation();
-            } else {
-                Log.d("WeatherApp", "Permission denied =( ");
-            }
-        }
-
-    }
-
-    private void letsDoSomeNetworking(RequestParams params) {
-
-        AsyncHttpClient client = new AsyncHttpClient();
-
-        client.get(WEATHER_URL, params, new JsonHttpResponseHandler() {
-
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                Log.d(LOGCAT_TAG, "Success! JSON: " + response.toString());
-                WeatherDataModel weatherData = WeatherDataModel.fromJson(response);
-                updateUI(weatherData);
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable e, JSONObject response) {
-
-                Log.e(LOGCAT_TAG, "Fail " + e.toString());
-                Toast.makeText(MainActivity.this, "Request Failed", Toast.LENGTH_SHORT).show();
-
-                Log.d(LOGCAT_TAG, "Status code " + statusCode);
-                Log.d(LOGCAT_TAG, "Here's what we got instead " + response.toString());
-
-            }
-
-        });
     }
 
     private void letsDoSomeNetworkingForOCAPI(RequestParams params) {
