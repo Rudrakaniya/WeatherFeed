@@ -354,6 +354,9 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(LOGCAT_TAG, "Success! JSON: " + response.toString());
                 WeatherDataModel weatherData = WeatherDataModel.fromJson(response);
                 updateUI(weatherData);
+                LOCATION_LATITUDE = weatherData.getLat();
+                LOCATION_LONGITUDE = weatherData.getLon();
+                getWeatherForCurrentLocation1();
             }
 
             @Override
@@ -388,69 +391,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getWeatherForCurrentLocation1() {
-        Log.d(LOGCAT_TAG, "Getting weather for current location");
-        mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        mLocationListener = new LocationListener() {
-            @Override
-            public void onLocationChanged(Location location) {
-
-                Log.d(LOGCAT_TAG, "onLocationChanged() callback received");
-
-                String longitude = String.valueOf(location.getLongitude());
-                String latitude = String.valueOf(location.getLatitude());
-
-                Log.d(LOGCAT_TAG, "longitude is: " + longitude);
-                Log.d(LOGCAT_TAG, "latitude is: " + latitude);
-
-                RequestParams params = new RequestParams();
-                params.put("lat", latitude);
-                params.put("lon", longitude);
-                params.put("exclude", "minutely,hourly");
-                params.put("appid", APP_ID);
-                letsDoSomeNetworkingForOCAPI(params);
-            }
-
-            @Override
-            public void onStatusChanged(String provider, int status, Bundle extras) {
-                // Log statements to help you debug your app.
-                Log.d(LOGCAT_TAG, "onStatusChanged() callback received. Status: " + status);
-                Log.d(LOGCAT_TAG, "2 means AVAILABLE, 1: TEMPORARILY_UNAVAILABLE, 0: OUT_OF_SERVICE");
-            }
-
-            @Override
-            public void onProviderEnabled(String provider) {
-                Log.d(LOGCAT_TAG, "onProviderEnabled() callback received. Provider: " + provider);
-            }
-
-            @Override
-            public void onProviderDisabled(String provider) {
-                Log.d(LOGCAT_TAG, "onProviderDisabled() callback received. Provider: " + provider);
-            }
-        };
-
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
-            return;
-        }
-
-        // Some additional log statements to help you debug
-        Log.d(LOGCAT_TAG, "Location Provider used: "
-                + mLocationManager.getProvider(LOCATION_PROVIDER).getName());
-        Log.d(LOGCAT_TAG, "Location Provider is enabled: "
-                + mLocationManager.isProviderEnabled(LOCATION_PROVIDER));
-        Log.d(LOGCAT_TAG, "Last known location (if any): "
-                + mLocationManager.getLastKnownLocation(LOCATION_PROVIDER));
-        Log.d(LOGCAT_TAG, "Requesting location updates");
-
-        mLocationManager.requestLocationUpdates(LOCATION_PROVIDER, MIN_TIME, MIN_DISTANCE, mLocationListener);
-
+        Log.d(LOGCAT_TAG, "Getting weather for current ONE CALL API");
+        RequestParams params = new RequestParams();
+        params.put("lat", LOCATION_LATITUDE);
+        params.put("lon", LOCATION_LONGITUDE);
+        params.put("exclude", "minutely,hourly");
+        params.put("appid", APP_ID);
+        letsDoSomeNetworkingForOCAPI(params);
     }
 
     private void letsDoSomeNetworkingForOCAPI(RequestParams params) {
@@ -481,29 +428,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateUI(WeatherDataModel weather) {
-//        TimeZone defaultTimeZone = TimeZone.getDefault();
-//        int timeZone = Integer.parseInt(weather.getTimeZone());
-//
-//        if (timeZone < 0) {
-//        Date date = new Date();
-//        date.setTime();
-//        } else {
-
-//        }
-
-//        mDateTextView.setText("TimeZone   " + defaultTimeZone.getDisplayName(false, TimeZone.SHORT) + " " + (float) timeZone / 3600);
-
-
-
         mCityLabel.setText(weather.getCity());
         mTemperatureLabel.setText(weather.getTemperature());
 
         mCurrentWeatherMainTV.setText(weather.getCurrentWeatherMain());
         String cap = weather.getCurrentWeatherDescription().substring(0, 1).toUpperCase() + weather.getCurrentWeatherDescription().substring(1) + " today";
         mCurrentWeatherDescriptionTV.setText(cap);
-
-        LOCATION_LATITUDE = weather.getLat();
-        LOCATION_LONGITUDE = weather.getLon();
 
         CURRENT_TIME = Integer.parseInt(weather.getTimeZone()) + (  Integer.parseInt(weather.getCurrentDateAndTime()));
 
@@ -527,6 +457,8 @@ public class MainActivity extends AppCompatActivity {
     private void updateUIForOCAPI(WeatherDataModelForOCAPI weather) {
         Log.d(LOGCAT_TAG, "updateUIForOCAPI: lat " + weather.getLatitude());
         Log.d(LOGCAT_TAG, "updateUIForOCAPI: lon " + weather.getLongitude());
+
+        mWeekDay1TempTV.setText();
 
     }
 

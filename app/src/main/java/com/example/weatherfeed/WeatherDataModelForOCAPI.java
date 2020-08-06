@@ -85,7 +85,9 @@ public class WeatherDataModelForOCAPI {
 
             //Daily weather forecast data for Day 1.
             weatherData.m1ForecastUTC = jsonObject.getJSONArray("daily").getJSONObject(0).getString("dt");
-            weatherData.m1ForecastTemperature = jsonObject.getJSONArray("daily").getJSONObject(0).getJSONObject("temp").getString("day");
+            double tempResult = jsonObject.getJSONArray("daily").getJSONObject(0).getJSONObject("temp").getDouble("day") - 273.15;
+            int roundedValue = (int) Math.rint(tempResult);
+            weatherData.m1ForecastTemperature =  Integer.toString(roundedValue) + "°C";
             weatherData.m1ForecastWeatherID = jsonObject.getJSONArray("daily").getJSONObject(0).getJSONArray("weather").getJSONObject(0).getString("id");
             weatherData.m1ForecastWeatherMain = jsonObject.getJSONArray("daily").getJSONObject(0).getJSONArray("weather").getJSONObject(0).getString("main");
             weatherData.m1ForecastWeatherDescription = jsonObject.getJSONArray("daily").getJSONObject(0).getJSONArray("weather").getJSONObject(0).getString("description");

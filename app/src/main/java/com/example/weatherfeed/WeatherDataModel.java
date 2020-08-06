@@ -92,7 +92,7 @@ public class WeatherDataModel {
     }
 
     public String getTemperature() {
-        return mTemperature + "°";
+        return mTemperature + "°C";
     }
 
     public String getCity() {
