@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     boolean isDrawerOpen = false;
 
     private String LOCATION_LATITUDE, LOCATION_LONGITUDE;
-    private long CURRENT_TIME;
+    private long CURRENT_TIME, CURRENT_TIMEZONE;
 
     final String LOGCAT_TAG = "WeatherApp";
 
@@ -435,6 +435,7 @@ public class MainActivity extends AppCompatActivity {
         String cap = weather.getCurrentWeatherDescription().substring(0, 1).toUpperCase() + weather.getCurrentWeatherDescription().substring(1) + " today";
         mCurrentWeatherDescriptionTV.setText(cap);
 
+        CURRENT_TIMEZONE = Integer.parseInt(weather.getTimeZone());
         CURRENT_TIME = Integer.parseInt(weather.getTimeZone()) + (  Integer.parseInt(weather.getCurrentDateAndTime()));
 
         CurrentTime currentTime = CurrentTime.getCurrentTime(CURRENT_TIME);
@@ -452,13 +453,32 @@ public class MainActivity extends AppCompatActivity {
         mWeekDay4TV.setText(currentTime.getNextDay4().substring(0, 3).toUpperCase());
         mWeekDay5TV.setText(currentTime.getNextDay5().substring(0, 3).toUpperCase());
 
+        mDetailViewLocationTV.setText("Weather today in " + weather.getCity() + ", " + weather.getCountryName());
     }
 
     private void updateUIForOCAPI(WeatherDataModelForOCAPI weather) {
         Log.d(LOGCAT_TAG, "updateUIForOCAPI: lat " + weather.getLatitude());
         Log.d(LOGCAT_TAG, "updateUIForOCAPI: lon " + weather.getLongitude());
 
-        mWeekDay1TempTV.setText();
+        mWeekDay1TempTV.setText(weather.getM1ForecastTemperature());
+        mWeekDay2TempTV.setText(weather.getM2ForecastTemperature());
+        mWeekDay3TempTV.setText(weather.getM3ForecastTemperature());
+        mWeekDay4TempTV.setText(weather.getM4ForecastTemperature());
+        mWeekDay5TempTV.setText(weather.getM5ForecastTemperature());
+
+        CurrentTime currentTimeForSR = CurrentTime.getCurrentTime( CURRENT_TIMEZONE + weather.getSunrise());
+        mSunriseTimeTextView.setText(currentTimeForSR.getHour() + ":" + currentTimeForSR.getMinutes() + " AM");
+
+        CurrentTime currentTimeForSS = CurrentTime.getCurrentTime( CURRENT_TIMEZONE + weather.getSunset());
+        mSunsetTimeTextView.setText(currentTimeForSR.getHour() + ":" + currentTimeForSR.getMinutes() + " PM");
+
+        mDetailViewTempTV.setText(weather.getTemperatureFeelsLike());
+        mWindSpeedTV.setText(weather.getTemperatureFeelsLike() + " m/sec");
+        mHumidityPercentTV.setText(weather.getHumidity() + "%");
+        mPressureHPATV.setText(weather.getPressure() + " hPa");
+        mCloudinessTV.setText(weather.getClouds()+ "%");
+        mUvIndexTV.setText(weather.getUVIndex());
+        mVisibilityRangeTV.setText(weather.getVisibility()+"m");
 
     }
 

@@ -10,11 +10,14 @@ public class WeatherDataModelForOCAPI {
     private String mTimeZone;
     //Current
     private String mCurrentUTC;
-    private String mSunrise;
-    private String mSunset;
+    private long mSunrise;
+    private long mSunset;
     private String mTemperature;
     private String mTemperatureFeelsLike;
     private String mHumidity;
+    private String mPressure;
+    private String mUVIndex;
+    private String mVisibility;
     private String mClouds;
     //weather
     private String mWeatherID;
@@ -71,12 +74,20 @@ public class WeatherDataModelForOCAPI {
             weatherData.mTimeZone = jsonObject.getString("timezone");
             //Current data
             weatherData.mCurrentUTC = jsonObject.getJSONObject("current").getString("dt");
-            weatherData.mSunrise = jsonObject.getJSONObject("current").getString("sunrise");
-            weatherData.mSunset = jsonObject.getJSONObject("current").getString("sunset");
+            weatherData.mSunrise = jsonObject.getJSONObject("current").getLong("sunrise");
+            weatherData.mSunset = jsonObject.getJSONObject("current").getLong("sunset");
             weatherData.mTemperature = jsonObject.getJSONObject("current").getString("temp");
-            weatherData.mTemperatureFeelsLike = jsonObject.getJSONObject("current").getString("feels_like");
+
+            double tempResult = jsonObject.getJSONObject("current").getDouble("feels_like") - 273.15;
+            int roundedValue = (int) Math.rint(tempResult);
+            weatherData.mTemperatureFeelsLike =  Integer.toString(roundedValue) + "°C";
+
             weatherData.mHumidity = jsonObject.getJSONObject("current").getString("humidity");
             weatherData.mClouds = jsonObject.getJSONObject("current").getString("clouds");
+            weatherData.mPressure = jsonObject.getJSONObject("current").getString("pressure");
+            weatherData.mUVIndex = jsonObject.getJSONObject("current").getString("uvi");
+            weatherData.mVisibility = jsonObject.getJSONObject("current").getString("visibility");
+
             //Weather data
             weatherData.mWeatherID = jsonObject.getJSONObject("current").getJSONArray("weather").getJSONObject(0).getString("id");
             weatherData.mWeatherMain = jsonObject.getJSONObject("current").getJSONArray("weather").getJSONObject(0).getString("main");
@@ -85,8 +96,8 @@ public class WeatherDataModelForOCAPI {
 
             //Daily weather forecast data for Day 1.
             weatherData.m1ForecastUTC = jsonObject.getJSONArray("daily").getJSONObject(0).getString("dt");
-            double tempResult = jsonObject.getJSONArray("daily").getJSONObject(0).getJSONObject("temp").getDouble("day") - 273.15;
-            int roundedValue = (int) Math.rint(tempResult);
+            tempResult = jsonObject.getJSONArray("daily").getJSONObject(0).getJSONObject("temp").getDouble("day") - 273.15;
+            roundedValue = (int) Math.rint(tempResult);
             weatherData.m1ForecastTemperature =  Integer.toString(roundedValue) + "°C";
             weatherData.m1ForecastWeatherID = jsonObject.getJSONArray("daily").getJSONObject(0).getJSONArray("weather").getJSONObject(0).getString("id");
             weatherData.m1ForecastWeatherMain = jsonObject.getJSONArray("daily").getJSONObject(0).getJSONArray("weather").getJSONObject(0).getString("main");
@@ -95,7 +106,9 @@ public class WeatherDataModelForOCAPI {
 
             //Daily weather forecast data for Day 2.
             weatherData.m2ForecastUTC = jsonObject.getJSONArray("daily").getJSONObject(1).getString("dt");
-            weatherData.m2ForecastTemperature = jsonObject.getJSONArray("daily").getJSONObject(1).getJSONObject("temp").getString("day");
+            tempResult = jsonObject.getJSONArray("daily").getJSONObject(1).getJSONObject("temp").getDouble("day") - 273.15;
+            roundedValue = (int) Math.rint(tempResult);
+            weatherData.m2ForecastTemperature =  Integer.toString(roundedValue) + "°C";
             weatherData.m2ForecastWeatherID = jsonObject.getJSONArray("daily").getJSONObject(1).getJSONArray("weather").getJSONObject(0).getString("id");
             weatherData.m2ForecastWeatherMain = jsonObject.getJSONArray("daily").getJSONObject(1).getJSONArray("weather").getJSONObject(0).getString("main");
             weatherData.m2ForecastWeatherDescription = jsonObject.getJSONArray("daily").getJSONObject(1).getJSONArray("weather").getJSONObject(0).getString("description");
@@ -103,7 +116,9 @@ public class WeatherDataModelForOCAPI {
 
             //Daily weather forecast data for Day 3.
             weatherData.m3ForecastUTC = jsonObject.getJSONArray("daily").getJSONObject(2).getString("dt");
-            weatherData.m3ForecastTemperature = jsonObject.getJSONArray("daily").getJSONObject(2).getJSONObject("temp").getString("day");
+            tempResult = jsonObject.getJSONArray("daily").getJSONObject(2).getJSONObject("temp").getDouble("day") - 273.15;
+            roundedValue = (int) Math.rint(tempResult);
+            weatherData.m3ForecastTemperature =  Integer.toString(roundedValue) + "°C";
             weatherData.m3ForecastWeatherID = jsonObject.getJSONArray("daily").getJSONObject(2).getJSONArray("weather").getJSONObject(0).getString("id");
             weatherData.m3ForecastWeatherMain = jsonObject.getJSONArray("daily").getJSONObject(2).getJSONArray("weather").getJSONObject(0).getString("main");
             weatherData.m3ForecastWeatherDescription = jsonObject.getJSONArray("daily").getJSONObject(2).getJSONArray("weather").getJSONObject(0).getString("description");
@@ -111,7 +126,9 @@ public class WeatherDataModelForOCAPI {
 
             //Daily weather forecast data for Day 4.
             weatherData.m4ForecastUTC = jsonObject.getJSONArray("daily").getJSONObject(3).getString("dt");
-            weatherData.m4ForecastTemperature = jsonObject.getJSONArray("daily").getJSONObject(3).getJSONObject("temp").getString("day");
+            tempResult = jsonObject.getJSONArray("daily").getJSONObject(3).getJSONObject("temp").getDouble("day") - 273.15;
+            roundedValue = (int) Math.rint(tempResult);
+            weatherData.m4ForecastTemperature =  Integer.toString(roundedValue) + "°C";
             weatherData.m4ForecastWeatherID = jsonObject.getJSONArray("daily").getJSONObject(3).getJSONArray("weather").getJSONObject(0).getString("id");
             weatherData.m4ForecastWeatherMain = jsonObject.getJSONArray("daily").getJSONObject(3).getJSONArray("weather").getJSONObject(0).getString("main");
             weatherData.m4ForecastWeatherDescription = jsonObject.getJSONArray("daily").getJSONObject(3).getJSONArray("weather").getJSONObject(0).getString("description");
@@ -119,7 +136,9 @@ public class WeatherDataModelForOCAPI {
 
             //Daily weather forecast data for Day 5.
             weatherData.m5ForecastUTC = jsonObject.getJSONArray("daily").getJSONObject(4).getString("dt");
-            weatherData.m5ForecastTemperature = jsonObject.getJSONArray("daily").getJSONObject(4).getJSONObject("temp").getString("day");
+            tempResult = jsonObject.getJSONArray("daily").getJSONObject(4).getJSONObject("temp").getDouble("day") - 273.15;
+            roundedValue = (int) Math.rint(tempResult);
+            weatherData.m5ForecastTemperature =  Integer.toString(roundedValue) + "°C";
             weatherData.m5ForecastWeatherID = jsonObject.getJSONArray("daily").getJSONObject(4).getJSONArray("weather").getJSONObject(0).getString("id");
             weatherData.m5ForecastWeatherMain = jsonObject.getJSONArray("daily").getJSONObject(4).getJSONArray("weather").getJSONObject(0).getString("main");
             weatherData.m5ForecastWeatherDescription = jsonObject.getJSONArray("daily").getJSONObject(4).getJSONArray("weather").getJSONObject(0).getString("description");
@@ -178,11 +197,11 @@ public class WeatherDataModelForOCAPI {
         return mCurrentUTC;
     }
 
-    public String getSunrise() {
+    public long getSunrise() {
         return mSunrise;
     }
 
-    public String getSunset() {
+    public long getSunset() {
         return mSunset;
     }
 
@@ -200,6 +219,18 @@ public class WeatherDataModelForOCAPI {
 
     public String getWeatherID() {
         return mWeatherID;
+    }
+
+    public String getPressure() {
+        return mPressure;
+    }
+
+    public String getUVIndex() {
+        return mUVIndex;
+    }
+
+    public String getVisibility() {
+        return mVisibility;
     }
 
     public String getWeatherMain() {
