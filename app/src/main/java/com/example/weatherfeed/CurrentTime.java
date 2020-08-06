@@ -1,11 +1,15 @@
 package com.example.weatherfeed;
 
+import android.util.Log;
+
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 public class CurrentTime {
+
+    private static final String LOCAL_TAG = "WeatherApp";
 
     private String mDay;
     private String mNextDay1;
@@ -17,6 +21,7 @@ public class CurrentTime {
     private String mHour;
     private String mDate;
     private String mMonth;
+    private String mYear;
 
     public enum Months implements Serializable {
         January,
@@ -47,10 +52,12 @@ public class CurrentTime {
         CurrentTime doTime = new CurrentTime();
 
         Calendar c = Calendar.getInstance();
-        c.setTimeInMillis(timeStamp);
+//        Date date = new java.util.Date(timeStamp*1000L);
+        c.setTimeInMillis(timeStamp * 1000L);
 
         int dayNum = c.get(Calendar.DAY_OF_WEEK);
-
+        dayNum -= 2;
+        Log.d(LOCAL_TAG, "getCurrentTime: dayNum  " + dayNum);
         Days day = Days.values()[dayNum];
         doTime.mDay = day.toString();
 
@@ -58,7 +65,7 @@ public class CurrentTime {
 
         for (int i = 0; i < 5; ++i) {
             dayNum++;
-            if (dayNum > 7) {
+            if (dayNum >= 7) {
                 dayNum %= 7;
             }
             day = Days.values()[dayNum];
@@ -78,7 +85,8 @@ public class CurrentTime {
 
         SimpleDateFormat df = new SimpleDateFormat("MM");
         int monthNo = Integer.parseInt(df.format(c.getTime()));
-        Months month = Months.values()[monthNo];
+        Log.d(LOCAL_TAG, "getCurrentTime: month  " + monthNo);
+        Months month = Months.values()[--monthNo];
         doTime.mMonth = month.toString();
 
 
@@ -92,6 +100,9 @@ public class CurrentTime {
 
         df = new SimpleDateFormat("mm");
         doTime.mMinutes = df.format(currentTime.getTime());
+
+        df = new SimpleDateFormat("yyyy");
+        doTime.mYear = df.format(currentTime.getTime());
 
         return doTime;
     }
@@ -134,5 +145,9 @@ public class CurrentTime {
 
     public String getMonth() {
         return mMonth;
+    }
+
+    public String getYear() {
+        return mYear;
     }
 }

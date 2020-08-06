@@ -179,16 +179,27 @@
                     android:layout_height="match_parent">
 
                     <TextView
+                        android:id="@+id/dayTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="16dp"
+                        android:text="Monday"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="24dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
                         android:id="@+id/dateTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="4dp"
                         android:text="July 25, 3:14 PM"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginStart="16dp"
-                        app:layout_constraintTop_toTopOf="parent"
+                        android:textColor="@color/colorPrimaryDark"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:textColor="@color/colorPrimaryDark" />
-
+                        app:layout_constraintTop_toBottomOf="@id/dayTextView" />
 
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -205,20 +216,18 @@
                             android:layout_gravity="center"
                             android:text="16°C"
                             android:textSize="52dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/currentWeatherMain"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Clear"
-                            android:layout_marginStart="8dp"
                             android:textSize="20sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tempTV"
-                            />
+                            app:layout_constraintTop_toBottomOf="@id/tempTV" />
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/weatherSymbolIV"
@@ -227,23 +236,23 @@
                             android:layout_gravity="center"
                             android:scaleType="fitCenter"
                             android:src="@drawable/cloud_temp"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
-
-                        <TextView
-                            android:id="@+id/currentWeatherDescription"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=" Clear Sky Today"
-                            android:layout_marginEnd="32dp"
-                            android:layout_marginBottom="32dp"
-                            app:layout_constraintTop_toBottomOf="@id/weatherSymbolIV"
-                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            />
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/currentWeatherDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="46dp"
+                        android:layout_marginBottom="18dp"
+                        android:text=" Clear Sky Today"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -278,6 +287,7 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
+                            android:id="@+id/weekDay1TV"
                             android:layout_width="32sp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -286,11 +296,13 @@
                             android:textColor="@color/colorPrimaryDark" />
 
                         <ImageView
+                            android:id="@+id/weekDay1IV"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_weight="1" />
 
                         <TextView
+                            android:id="@+id/weekDay1TempTV"
                             android:layout_width="32sp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -314,6 +326,7 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
+                            android:id="@+id/weekDay2TV"
                             android:layout_width="32sp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -322,11 +335,13 @@
                             android:textColor="@color/colorPrimaryDark" />
 
                         <ImageView
+                            android:id="@+id/weekDay2IV"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_weight="1" />
 
                         <TextView
+                            android:id="@+id/weekDay2TempTV"
                             android:layout_width="32sp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -350,6 +365,7 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
+                            android:id="@+id/weekDay3TV"
                             android:layout_width="32sp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -358,11 +374,13 @@
                             android:textColor="@color/colorPrimaryDark" />
 
                         <ImageView
+                            android:id="@+id/weekDay3IV"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_weight="1" />
 
                         <TextView
+                            android:id="@+id/weekDay3TempTV"
                             android:layout_width="32sp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -386,6 +404,7 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
+                            android:id="@+id/weekDay4TV"
                             android:layout_width="32sp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -394,11 +413,13 @@
                             android:textColor="@color/colorPrimaryDark" />
 
                         <ImageView
+                            android:id="@+id/weekDay4IV"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_weight="1" />
 
                         <TextView
+                            android:id="@+id/weekDay4TempTV"
                             android:layout_width="32sp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -423,6 +444,7 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
+                            android:id="@+id/weekDay5TV"
                             android:layout_width="32sp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -431,11 +453,13 @@
                             android:textColor="@color/colorPrimaryDark" />
 
                         <ImageView
+                            android:id="@+id/weekDay5IV"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_weight="1" />
 
                         <TextView
+                            android:id="@+id/weekDay5TempTV"
                             android:layout_width="32sp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -538,8 +562,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:cardElevation="0dp"
                 app:cardBackgroundColor="@color/colorPrimary"
+                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/materialCardView4">
@@ -547,47 +571,47 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:src="@mipmap/commas"
                         android:layout_marginTop="4dp"
                         android:layout_marginEnd="8dp"
+                        android:src="@mipmap/commas"
                         app:layout_constraintEnd_toStartOf="@id/weatherQuoteTV"
-                        app:layout_constraintTop_toTopOf="parent"
-                       />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/weatherQuoteTV"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:singleLine="false"
+                        android:layout_marginStart="64dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="64dp"
+                        android:layout_marginBottom="16dp"
+                        android:ellipsize="end"
+                        android:gravity="center"
                         android:lines="2"
                         android:maxLines="3"
-                        android:gravity="center"
-                        android:ellipsize="end"
-                        android:layout_marginBottom="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginStart="64dp"
-                        android:layout_marginEnd="64dp"
+                        android:singleLine="false"
                         android:text="Climate is what we expect, weather is what we get."
-                        />
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.card.MaterialCardView>
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                android:layout_marginTop="8dp"
                 app:cardBackgroundColor="@color/colorWhiteGrey"
                 app:cardCornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -938,19 +962,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="© 2020 Copyright: Rudra Kaniya "
-                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/madeInIndia"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintBottom_toTopOf="@id/madeInIndia"/>
+                        app:layout_constraintTop_toTopOf="parent" />
+
                     <TextView
                         android:id="@+id/madeInIndia"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Made with ❤ in India"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/madeByRudra"/>
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/madeByRudra" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

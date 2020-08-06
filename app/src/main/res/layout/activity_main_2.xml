@@ -25,7 +25,7 @@
 
 
         <TextView
-            android:id="@+id/tvText"
+            android:id="@+id/locationTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/locationString"
@@ -183,13 +183,25 @@
                     android:layout_height="match_parent">
 
                     <TextView
+                        android:id="@+id/dayTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Monday"
+                        android:textSize="24dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="32dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <TextView
                         android:id="@+id/dateTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="July 25, 3:14 PM"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginStart="16dp"
-                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginStart="32dp"
+                        app:layout_constraintTop_toBottomOf="@id/dayTextView"
                         app:layout_constraintStart_toStartOf="parent"
                         android:textColor="@color/colorPrimaryDark" />
 
@@ -218,7 +230,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Clear"
-                            android:layout_marginStart="8dp"
                             android:textSize="20sp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/tempTV"
@@ -235,19 +246,19 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"/>
 
-                        <TextView
-                            android:id="@+id/currentWeatherDescription"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=" Clear Sky Today"
-                            android:layout_marginEnd="32dp"
-                            android:layout_marginBottom="32dp"
-                            app:layout_constraintTop_toBottomOf="@id/weatherSymbolIV"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            />
+
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/currentWeatherDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" Clear Sky Today"
+                        android:layout_marginEnd="46dp"
+                        android:layout_marginBottom="18dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 

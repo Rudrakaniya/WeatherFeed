@@ -46,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
     ImageButton mImageButton;
     boolean isDrawerOpen = false;
 
+    private String LOCATION_LATITUDE, LOCATION_LONGITUDE;
+    private long CURRENT_TIME;
+
     final String LOGCAT_TAG = "WeatherApp";
 
     final int REQUEST_CODE = 123;
@@ -64,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     TextView mCityLabel;
     ImageView mWeatherImage;
     TextView mTemperatureLabel;
-    TextView mDateTextView;
+    TextView mDateTextView, mDayTextView;
     TextView mCurrentWeatherMainTV;
     TextView mCurrentWeatherDescriptionTV;
 
@@ -107,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
         mCityLabel = findViewById(R.id.locationTV);
         mWeatherImage = findViewById(R.id.weatherSymbolIV);
         mDateTextView = findViewById(R.id.dateTextView);
+        mDayTextView = findViewById(R.id.dayTextView);
         mTemperatureLabel = findViewById(R.id.tempTV);
         mCurrentWeatherMainTV = findViewById(R.id.currentWeatherMain);
         mCurrentWeatherDescriptionTV = findViewById(R.id.currentWeatherDescription);
@@ -250,7 +254,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(LOGCAT_TAG, "onResume() called");
         Log.d(LOGCAT_TAG, "onResume: ");
 
-        if (mUseLocation) getWeatherForCurrentLocation1();
+        if (mUseLocation) getWeatherForCurrentLocation();
     }
 
 
@@ -490,11 +494,34 @@ public class MainActivity extends AppCompatActivity {
 //        mDateTextView.setText("TimeZone   " + defaultTimeZone.getDisplayName(false, TimeZone.SHORT) + " " + (float) timeZone / 3600);
 
 
-        mTemperatureLabel.setText(weather.getTemperature());
+
         mCityLabel.setText(weather.getCity());
+        mTemperatureLabel.setText(weather.getTemperature());
+
+        mCurrentWeatherMainTV.setText(weather.getCurrentWeatherMain());
+        String cap = weather.getCurrentWeatherDescription().substring(0, 1).toUpperCase() + weather.getCurrentWeatherDescription().substring(1) + " today";
+        mCurrentWeatherDescriptionTV.setText(cap);
+
+        LOCATION_LATITUDE = weather.getLat();
+        LOCATION_LONGITUDE = weather.getLon();
+
+        CURRENT_TIME = Integer.parseInt(weather.getTimeZone()) + (  Integer.parseInt(weather.getCurrentDateAndTime()));
+
+        CurrentTime currentTime = CurrentTime.getCurrentTime(CURRENT_TIME);
+
+        mDayTextView.setText(currentTime.getDay());
+        String dateString = currentTime.getMonth() + " " + currentTime.getDate() + ", " + currentTime.getYear()+ " "+ currentTime.getHour() + " PM";
+        mDateTextView.setText(dateString);
 
         int resourceID = getResources().getIdentifier(weather.getIconName(), "drawable", getPackageName());
         mWeatherImage.setImageResource(resourceID);
+
+        mWeekDay1TV.setText(currentTime.getNextDay1().substring(0, 3).toUpperCase());
+        mWeekDay2TV.setText(currentTime.getNextDay2().substring(0, 3).toUpperCase());
+        mWeekDay3TV.setText(currentTime.getNextDay3().substring(0, 3).toUpperCase());
+        mWeekDay4TV.setText(currentTime.getNextDay4().substring(0, 3).toUpperCase());
+        mWeekDay5TV.setText(currentTime.getNextDay5().substring(0, 3).toUpperCase());
+
     }
 
     private void updateUIForOCAPI(WeatherDataModelForOCAPI weather) {
