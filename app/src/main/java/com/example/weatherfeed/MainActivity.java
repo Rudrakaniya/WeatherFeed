@@ -29,6 +29,7 @@ import android.widget.Toast;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
@@ -56,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
 
     final String WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather";
     final String APP_ID = "8ddd9e61267c0854ea44d8f0e349c731";
+    final String IMAGE_LOAD_LINK = "http://openweathermap.org/img/wn/";
+//    10d@2x.png
 
     final String ONE_CALL_API_URL = "https://api.openweathermap.org/data/2.5/onecall";
 
@@ -479,6 +482,13 @@ public class MainActivity extends AppCompatActivity {
         mCloudinessTV.setText(weather.getClouds()+ "%");
         mUvIndexTV.setText(weather.getUVIndex());
         mVisibilityRangeTV.setText(weather.getVisibility()+"m");
+
+        Picasso.get().load(IMAGE_LOAD_LINK + weather.getM1ForecastIcon() + "@2x.png").into(mWeekDay1IV);
+        Picasso.get().load(IMAGE_LOAD_LINK + weather.getM2ForecastIcon() + "@2x.png").into(mWeekDay2IV);
+        Picasso.get().load(IMAGE_LOAD_LINK + weather.getM3ForecastIcon() + "@2x.png").into(mWeekDay3IV);
+        Picasso.get().load(IMAGE_LOAD_LINK + weather.getM4ForecastIcon() + "@2x.png").into(mWeekDay4IV);
+        Picasso.get().load(IMAGE_LOAD_LINK + weather.getM5ForecastIcon() + "@2x.png").into(mWeekDay5IV);
+
 
     }
 

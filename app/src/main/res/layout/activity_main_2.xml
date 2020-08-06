@@ -533,6 +533,7 @@
                         android:id="@+id/sunsetTimeTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
                         android:layout_marginBottom="16dp"
                         android:text="7:52 PM"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -542,6 +543,7 @@
 
                     <ImageView
                         android:id="@+id/sunriseImageView"
+                        android:src="@mipmap/sunrise_icon"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:layout_marginTop="16dp"
@@ -552,8 +554,10 @@
 
                     <ImageView
                         android:id="@+id/sunsetImageView"
+                        android:src="@mipmap/sunset_icon"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:layout_marginTop="4dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="16dp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -580,7 +584,7 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:src="@mipmap/commas"
+                        android:src="@mipmap/commasu"
                         android:layout_marginTop="4dp"
                         android:layout_marginEnd="8dp"
                         app:layout_constraintEnd_toStartOf="@id/weatherQuoteTV"
@@ -678,6 +682,7 @@
 
                         <ImageView
                             android:id="@+id/windImageView"
+                            android:src="@mipmap/wind_icon"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_marginStart="16dp"
@@ -724,6 +729,7 @@
 
                         <ImageView
                             android:id="@+id/humidityImageView"
+                            android:src="@mipmap/humidity_icon"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_marginStart="16dp"
@@ -770,6 +776,7 @@
 
                         <ImageView
                             android:id="@+id/pressureImageView"
+                            android:src="@mipmap/pressure_icon"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_marginStart="16dp"
@@ -816,8 +823,9 @@
 
                         <ImageView
                             android:id="@+id/cloudsImageView"
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
+                            android:src="@mipmap/cloudiness"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
                             android:layout_marginStart="16dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -862,6 +870,7 @@
 
                         <ImageView
                             android:id="@+id/uvImageView"
+                            android:src="@mipmap/uv_icon"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_marginStart="16dp"
@@ -910,6 +919,7 @@
 
                         <ImageView
                             android:id="@+id/visibilityImageView"
+                            android:src="@mipmap/visibility_icon"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_marginStart="16dp"
