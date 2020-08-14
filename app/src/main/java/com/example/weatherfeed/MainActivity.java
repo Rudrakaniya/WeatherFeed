@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     final int NEW_CITY_CODE = 2;
 
     final String WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather";
-    final String APP_ID = "8ddd9e61267c0854ea44d8f0e349c731";
+    final String APP_ID = "8ddd9e61267c0854ea4zzzzzzzzz4d8f0e349c731";
     final String IMAGE_LOAD_LINK = "http://openweathermap.org/img/wn/";
 //    10d@2x.png
 
@@ -56,6 +56,10 @@ public class MainActivity extends AppCompatActivity {
 
     final long MIN_TIME = 5000;
     final float MIN_DISTANCE = 1000;
+
+    // Navigation drawer
+    TextView mSettingsNav;
+    TextView mAboutUsNav;
 
     // Member Variables:
     boolean mUseLocation = true;
@@ -99,6 +103,10 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         city = sharedPreferences.getString("cityName", "");
         Log.d(TAG, "onCreate: city" + city);
+
+        // Navigation drawer
+        mSettingsNav = findViewById(R.id.settingsTextView);
+        mAboutUsNav = findViewById(R.id.aboutUsTextView);
 
 
         // Linking the elements in the layout to Java code.
@@ -150,6 +158,25 @@ public class MainActivity extends AppCompatActivity {
         mCloudinessTV =findViewById(R.id.cloudinessTextView);
         mUvIndexTV = findViewById(R.id.uvIndexTextView);
         mVisibilityRangeTV = findViewById(R.id.visibilityRangeTextView);
+
+
+        // Navigation Drawer
+        mSettingsNav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(MainActivity.this, Settings.class);
+                Log.d(LOGCAT_TAG, "onClick: Settings Button Clicked");
+                startActivity(myIntent);
+            }
+        });
+        mAboutUsNav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(MainActivity.this, AboutUs.class);
+                Log.d(LOGCAT_TAG, "onClick: AboutUs Button Clicked");
+                startActivity(myIntent);
+            }
+        });
 
 
         mImageButton.setOnClickListener(new View.OnClickListener() {
