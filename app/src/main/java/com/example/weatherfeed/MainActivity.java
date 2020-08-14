@@ -1,12 +1,5 @@
 package com.example.weatherfeed;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.motion.widget.MotionLayout;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -16,27 +9,26 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.text.format.Time;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.motion.widget.MotionLayout;
+import androidx.core.app.ActivityCompat;
+
+import com.bumptech.glide.Glide;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -134,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
         mWeekDay3IV = findViewById(R.id.weekDay3IV);
         mWeekDay4IV = findViewById(R.id.weekDay4IV);
         mWeekDay5IV = findViewById(R.id.weekDay5IV);
+
 
         mWeekDay1TempTV = findViewById(R.id.weekDay1TempTV);
         mWeekDay2TempTV = findViewById(R.id.weekDay2TempTV);
@@ -483,11 +476,16 @@ public class MainActivity extends AppCompatActivity {
         mUvIndexTV.setText(weather.getUVIndex());
         mVisibilityRangeTV.setText(weather.getVisibility()+"m");
 
-        Picasso.get().load(IMAGE_LOAD_LINK + weather.getM1ForecastIcon() + "@2x.png").into(mWeekDay1IV);
-        Picasso.get().load(IMAGE_LOAD_LINK + weather.getM2ForecastIcon() + "@2x.png").into(mWeekDay2IV);
-        Picasso.get().load(IMAGE_LOAD_LINK + weather.getM3ForecastIcon() + "@2x.png").into(mWeekDay3IV);
-        Picasso.get().load(IMAGE_LOAD_LINK + weather.getM4ForecastIcon() + "@2x.png").into(mWeekDay4IV);
-        Picasso.get().load(IMAGE_LOAD_LINK + weather.getM5ForecastIcon() + "@2x.png").into(mWeekDay5IV);
+        Glide.with(this).load(IMAGE_LOAD_LINK + weather.getM1ForecastIcon() + "@2x.png").into(mWeekDay1IV);
+        Glide.with(this).load(IMAGE_LOAD_LINK + weather.getM2ForecastIcon() + "@2x.png").into(mWeekDay2IV);
+        Glide.with(this).load(IMAGE_LOAD_LINK + weather.getM3ForecastIcon() + "@2x.png").into(mWeekDay3IV);
+        Glide.with(this).load(IMAGE_LOAD_LINK + weather.getM4ForecastIcon() + "@2x.png").into(mWeekDay4IV);
+        Glide.with(this).load(IMAGE_LOAD_LINK + weather.getM5ForecastIcon() + "@2x.png").into(mWeekDay5IV);
+
+//        Picasso.get().load(IMAGE_LOAD_LINK + weather.getM2ForecastIcon() + "@2x.png").into(mWeekDay2IV);
+//        Picasso.get().load(IMAGE_LOAD_LINK + weather.getM3ForecastIcon() + "@2x.png").into(mWeekDay3IV);
+//        Picasso.get().load(IMAGE_LOAD_LINK + weather.getM4ForecastIcon() + "@2x.png").into(mWeekDay4IV);
+//        Picasso.get().load(IMAGE_LOAD_LINK + weather.getM5ForecastIcon() + "@2x.png").into(mWeekDay5IV);
 
 
     }

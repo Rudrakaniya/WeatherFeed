@@ -305,6 +305,7 @@
                             android:id="@+id/weekDay1IV"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
+                            android:src="@mipmap/sunset_icon"
                             android:layout_weight="1" />
 
                         <TextView
