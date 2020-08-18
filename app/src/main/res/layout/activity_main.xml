@@ -168,8 +168,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
                 android:layout_margin="16dp"
-                app:cardBackgroundColor="@color/colorWhiteGrey"
+                app:cardBackgroundColor="@color/colorPrimary"
                 app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -258,16 +259,47 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/weatherForecastL"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+                app:layout_constraintBottom_toTopOf="@+id/materialCardView1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Weather Forecast"
+                    android:textSize="20sp"
+                    android:layout_marginStart="20dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView1"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:layout_margin="16dp"
-                app:cardBackgroundColor="@color/colorWhiteGrey"
+                android:layout_marginTop="6dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="16dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/colorPrimary"
                 app:cardCornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/materialCardView">
+                app:layout_constraintTop_toBottomOf="@id/weatherForecastL">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -280,6 +312,7 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
+                        android:elevation="2dp"
                         android:background="@drawable/week_day_layout"
                         android:orientation="vertical"
                         android:padding="5dp"
@@ -319,6 +352,7 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
+                        android:elevation="2dp"
                         android:background="@drawable/week_day_layout"
                         android:orientation="vertical"
                         android:padding="5dp"
@@ -358,6 +392,7 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
+                        android:elevation="2dp"
                         android:background="@drawable/week_day_layout"
                         android:orientation="vertical"
                         android:padding="5dp"
@@ -397,6 +432,7 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
+                        android:elevation="2dp"
                         android:background="@drawable/week_day_layout"
                         android:orientation="vertical"
                         android:padding="5dp"
@@ -437,6 +473,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="8dp"
+                        android:elevation="2dp"
                         android:background="@drawable/week_day_layout"
                         android:orientation="vertical"
                         android:padding="5dp"
@@ -470,19 +507,47 @@
                     </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-
             </com.google.android.material.card.MaterialCardView>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/sunLayout"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView1"
+                app:layout_constraintBottom_toTopOf="@+id/materialCardView4">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sun in Jammu"
+                    android:textSize="20sp"
+                    android:layout_marginStart="20dp"
+                    android:textColor="@android:color/background_dark"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                app:cardBackgroundColor="@color/colorWhiteGrey"
+                android:layout_marginTop="6dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardElevation="4dp"
                 app:cardCornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/materialCardView1">
+                app:layout_constraintTop_toBottomOf="@id/sunLayout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -618,7 +683,8 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 android:layout_marginTop="8dp"
-                app:cardBackgroundColor="@color/colorWhiteGrey"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/colorPrimary"
                 app:cardCornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -671,6 +737,7 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="8dp"
+                        android:elevation="2dp"
                         android:background="@drawable/bottom_for_detail_textview"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -718,6 +785,7 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="4dp"
                         android:layout_marginEnd="8dp"
+                        android:elevation="2dp"
                         android:background="@drawable/bottom_for_detail_textview"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -764,6 +832,7 @@
                         android:layout_height="50dp"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="4dp"
+                        android:elevation="2dp"
                         android:layout_marginEnd="8dp"
                         android:background="@drawable/bottom_for_detail_textview"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -812,6 +881,7 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="4dp"
                         android:layout_marginEnd="8dp"
+                        android:elevation="2dp"
                         android:background="@drawable/bottom_for_detail_textview"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -858,6 +928,7 @@
                         android:layout_height="50dp"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="4dp"
+                        android:elevation="2dp"
                         android:layout_marginEnd="8dp"
                         android:background="@drawable/bottom_for_detail_textview"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -907,6 +978,7 @@
                         android:layout_marginTop="4dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="16dp"
+                        android:elevation="2dp"
                         android:background="@drawable/bottom_for_detail_textview"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"

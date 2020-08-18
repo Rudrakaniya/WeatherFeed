@@ -20,9 +20,11 @@ public class AboutUs extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // GitHub repo for this Library: -  https://github.com/medyo/android-about-page
+
         View aboutPage = new AboutPage(this)
                 .isRTL(false)
-                .enableDarkMode(false)
+                .enableDarkMode(true)
                 .setImage(R.drawable.about_icon_instagram)
                 .setDescription("Jai Mata Di")
                 .addItem(new Element().setTitle("Version 6.2"))
@@ -30,7 +32,6 @@ public class AboutUs extends AppCompatActivity {
                 .addEmail("elmehdi.sakout@gmail.com")
                 .addWebsite("https://mehdisakout.com/")
                 .addFacebook("the.medy")
-                .addTwitter("medyo80")
                 .addYoutube("UCdPQtdWIsg7_pi4mrRu46vA")
                 .addPlayStore("com.ideashower.readitlater.pro")
                 .addGitHub("medyo")

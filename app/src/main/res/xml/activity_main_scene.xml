@@ -9,6 +9,10 @@
 
 
 <!--        <OnClick motion:targetId="@+id/img" />-->
+<!--        <onSwipe-->
+<!--            motion:touchAnchorId="@id/navigationDrawer"-->
+<!--            motion:touchAnchorSide="right"-->
+<!--        />-->
     </Transition>
 
 
