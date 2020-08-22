@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "686853430071",
+    "firebase_url": "https://weather-feed.firebaseio.com",
+    "project_id": "weather-feed",
+    "storage_bucket": "weather-feed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:686853430071:android:98991ac32e70a7ead598b2",
+        "android_client_info": {
+          "package_name": "com.example.weatherfeed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "686853430071-vosgp2juiv71b4ov4kjln93nfsd7fn5o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYSs4TV5qHqRnC3SihlYfe2vOXXUqhSMY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "686853430071-vosgp2juiv71b4ov4kjln93nfsd7fn5o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
