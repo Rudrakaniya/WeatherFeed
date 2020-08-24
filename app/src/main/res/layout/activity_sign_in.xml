@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/appLogoIV"
-        android:layout_width="130dp"
-        android:layout_height="132dp"
+        android:layout_width="120dp"
+        android:layout_height="122dp"
         android:layout_marginTop="140dp"
         android:src="@drawable/applogo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,8 +24,6 @@
         android:layout_marginTop="34dp"
         android:gravity="center"
         android:text="Weather Feed"
-        android:fontFamily="@font/font_res"
-        android:textColor="@color/colorPrimaryDark"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
