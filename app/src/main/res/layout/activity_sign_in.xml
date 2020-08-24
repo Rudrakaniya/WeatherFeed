@@ -8,9 +8,9 @@
 
     <ImageView
         android:id="@+id/appLogoIV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_width="130dp"
+        android:layout_height="132dp"
+        android:layout_marginTop="140dp"
         android:src="@drawable/applogo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,13 +21,48 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="44dp"
         android:gravity="center"
         android:text="Weather Feed"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appLogoIV" />
+
+    <ImageView
+        android:id="@+id/squareIV"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginEnd="326dp"
+        android:alpha=".35"
+        android:rotation="45"
+        android:src="@drawable/square"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideline5" />
+
+    <ImageView
+        android:id="@+id/hexagonIV"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_marginBottom="190dp"
+        android:layout_marginEnd="324dp"
+        android:alpha=".35"
+        android:rotation="5"
+        android:src="@drawable/hexagon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline6" />
+
+    <ImageView
+        android:id="@+id/circleIV"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_marginStart="340dp"
+        android:layout_marginTop="200dp"
+        android:alpha=".35"
+        android:rotation="45"
+        android:src="@drawable/circle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <com.google.android.gms.common.SignInButton
@@ -36,13 +71,36 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="96dp"
+        android:layout_marginBottom="150dp"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent" />
 
-    </com.google.android.gms.common.SignInButton>
+    <TextView
+        android:id="@+id/termsTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:text="By clicking on signin button you agree\n to our Terms &amp; Privacy Policy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signInBtn" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

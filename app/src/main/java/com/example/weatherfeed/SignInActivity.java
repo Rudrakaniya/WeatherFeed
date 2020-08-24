@@ -7,6 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -39,7 +43,7 @@ public class SignInActivity extends AppCompatActivity {
 
         FirebaseUser user = mAuth.getCurrentUser();
 
-        if (user != null){
+        if (user != null) {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
             finish();
@@ -69,6 +73,24 @@ public class SignInActivity extends AppCompatActivity {
                 signIn();
             }
         });
+
+        // Image animations
+        ImageView mSquareIV = findViewById(R.id.squareIV);
+        ImageView mhexagonIV = findViewById(R.id.hexagonIV);
+        ImageView mcircleIV = findViewById(R.id.circleIV);
+
+        RotateAnimation anim = new RotateAnimation(0.0f, 360.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+
+        //Setup anim with desired properties
+        anim.setInterpolator(new LinearInterpolator());
+        anim.setRepeatCount(Animation.INFINITE); //Repeat animation indefinitely
+        anim.setDuration(55000); //Put desired duration per anim cycle here, in milliseconds
+
+        //Start animation
+        mSquareIV.startAnimation(anim);
+        mhexagonIV.startAnimation(anim);
+        mcircleIV.startAnimation(anim);
+
     }
 
     private void createRequest() {
