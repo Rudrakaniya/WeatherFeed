@@ -5,7 +5,7 @@
     <Transition
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@+id/start"
-        motion:duration="500">
+        motion:duration="280">
 
 
 <!--        <OnClick motion:targetId="@+id/img" />-->

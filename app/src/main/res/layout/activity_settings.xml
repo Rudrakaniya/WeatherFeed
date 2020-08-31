@@ -7,7 +7,7 @@
     tools:context=".ChangeCityController">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/textViewLayout"
+        android:id="@+id/topLayout"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="@drawable/bottom"
@@ -20,12 +20,11 @@
             android:id="@+id/settingsTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="74dp"
             android:text="Settings"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="32sp"
-            android:textStyle="bold"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
@@ -36,54 +35,269 @@
 
     <ImageView
         android:id="@+id/backButton"
-        android:layout_width="39dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="16dp"
-        android:scaleType="centerCrop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:background="?attr/selectableItemBackground"
         android:clickable="true"
-        android:src="@mipmap/cross_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewLayout"
-        app:layout_constraintEnd_toEndOf="@+id/textViewLayout"
+        android:scaleType="centerCrop"
+        android:src="@drawable/arrow_back_ios_24"
+        app:layout_constraintBottom_toBottomOf="@+id/topLayout"
+        app:layout_constraintStart_toStartOf="@+id/topLayout"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Customizations adding soon!!"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="16dp"
+        android:text="© 2020 Copyright"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/settingsPageLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/settingsPageLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bottom"
+            android:paddingBottom="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/settingsPageLayout">
 
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.03009576" />
+            <TextView
+                android:id="@+id/displayOptionsTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Display Options"
+                android:textColor="@color/colorPink"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/settingsPageLayout1"
+                app:layout_constraintTop_toTopOf="@+id/settingsPageLayout1" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.047" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/displayOptionsTVBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/displayOptionsTV">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.953" />
+                <TextView
+                    android:id="@+id/themeTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:text="Theme"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/displayOptionsTVBtn"
+                    app:layout_constraintTop_toTopOf="@+id/displayOptionsTVBtn" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.065" />
+                <TextView
+                    android:id="@+id/themeNameTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="2dp"
+                    android:paddingBottom="12dp"
+                    android:text="Light"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/displayOptionsTVBtn"
+                    app:layout_constraintTop_toBottomOf="@+id/themeTV" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+            <TextView
+                android:id="@+id/notificationOptionsTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Notifications"
+                android:textColor="@color/colorPink"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/settingsPageLayout1"
+                app:layout_constraintTop_toBottomOf="@+id/displayOptionsTVBtn" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/notificationOptionsTVBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/notificationOptionsTV">
+
+                <TextView
+                    android:id="@+id/notificationTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Manage Notifications"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/notificationOptionsTVBtn"
+                    app:layout_constraintTop_toTopOf="@+id/notificationOptionsTVBtn" />
+
+                <TextView
+                    android:id="@+id/notificationTypeTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="2dp"
+                    android:paddingBottom="16dp"
+                    android:text="Don't show notifications"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/notificationOptionsTVBtn"
+                    app:layout_constraintTop_toBottomOf="@+id/notificationTV" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/settingsPageLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bottom"
+            android:paddingBottom="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/settingsPageLayout1">
+
+
+            <TextView
+                android:id="@+id/feedbackTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Feedback"
+                android:textColor="@color/colorPink"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/settingsPageLayout2"
+                app:layout_constraintTop_toTopOf="@+id/settingsPageLayout2" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/feedbackTVBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/feedbackTV">
+
+                <TextView
+                    android:id="@+id/provideFeedbackTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:text="Provide Feedback"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/feedbackTVBtn" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/signOutTVBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/settingsPageLayout2">
+
+            <TextView
+                android:id="@+id/signOutTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Sign Out"
+                android:textColor="@color/colorPink"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/signOutTVBtn" />
+
+            <TextView
+                android:id="@+id/signOutEmailTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="2dp"
+                android:paddingBottom="16dp"
+                android:text="rudra.kaniya.rk@gmail.com"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/signOutTV" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.03009576" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.047" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.953" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.065" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
