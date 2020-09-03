@@ -183,13 +183,14 @@
                         android:id="@+id/dayTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Monday"
-                        android:textSize="24dp"
-                        android:layout_marginTop="16dp"
                         android:layout_marginStart="32dp"
-                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/raleway_bold"
+                        android:text="Monday"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="24dp"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:textColor="@color/colorPrimaryDark" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/dateTextView"
@@ -218,6 +219,7 @@
                             android:layout_gravity="center"
                             android:text="16°C"
                             android:textSize="52dp"
+                            android:fontFamily="@font/raleway_bold"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"/>

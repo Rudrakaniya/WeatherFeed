@@ -1,42 +1,42 @@
 {
   "project_info": {
-    "project_number": "686853430071",
-    "firebase_url": "https://weather-feed.firebaseio.com",
-    "project_id": "weather-feed",
-    "storage_bucket": "weather-feed.appspot.com"
+    "project_number": "324618162385",
+    "firebase_url": "https://weather-feed-1d79c.firebaseio.com",
+    "project_id": "weather-feed-1d79c",
+    "storage_bucket": "weather-feed-1d79c.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:686853430071:android:98991ac32e70a7ead598b2",
+        "mobilesdk_app_id": "1:324618162385:android:399045a3d11215f87975f0",
         "android_client_info": {
-          "package_name": "com.example.weatherfeed"
+          "package_name": "com.rudrakaniya.weatherfeed"
         }
       },
       "oauth_client": [
         {
-          "client_id": "686853430071-u5b9qirq6srfav7eg1qfv61qpl0g7e6p.apps.googleusercontent.com",
+          "client_id": "324618162385-88t084chsmtgp85ogo4ba2ud65auq687.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.weatherfeed",
+            "package_name": "com.rudrakaniya.weatherfeed",
             "certificate_hash": "866d8b62c46be0f6803393b14a9b2f5c96241dea"
           }
         },
         {
-          "client_id": "686853430071-vosgp2juiv71b4ov4kjln93nfsd7fn5o.apps.googleusercontent.com",
+          "client_id": "324618162385-u9bh7lsepci8leof461v2se95g397bia.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCYSs4TV5qHqRnC3SihlYfe2vOXXUqhSMY"
+          "current_key": "AIzaSyCeXOt0p5VwDsIqT_4DbCwH6aHKZR5qrI8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "686853430071-vosgp2juiv71b4ov4kjln93nfsd7fn5o.apps.googleusercontent.com",
+              "client_id": "324618162385-u9bh7lsepci8leof461v2se95g397bia.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

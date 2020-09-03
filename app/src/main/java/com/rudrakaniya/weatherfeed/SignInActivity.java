@@ -1,4 +1,4 @@
-package com.example.weatherfeed;
+package com.rudrakaniya.weatherfeed;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

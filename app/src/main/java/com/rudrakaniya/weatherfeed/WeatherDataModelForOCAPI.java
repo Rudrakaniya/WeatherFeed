@@ -1,4 +1,4 @@
-package com.example.weatherfeed;
+package com.rudrakaniya.weatherfeed;
 
 import org.json.JSONException;
 import org.json.JSONObject;

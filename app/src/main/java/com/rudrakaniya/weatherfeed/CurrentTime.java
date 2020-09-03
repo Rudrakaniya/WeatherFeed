@@ -1,4 +1,4 @@
-package com.example.weatherfeed;
+package com.rudrakaniya.weatherfeed;
 
 import android.util.Log;
 
