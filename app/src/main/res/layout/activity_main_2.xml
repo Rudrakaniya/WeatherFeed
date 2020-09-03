@@ -54,6 +54,109 @@
 
     // this is the card view
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/navigationDrawer"
+        android:layout_width="240dp"
+        android:layout_height="0dp"
+        android:background="@color/colorPrimary"
+        android:elevation="10dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/navigationDrawerApp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/navigationDrawerInner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/navigationDrawerAppLogo"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/applogo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/navigationDrawerAppTV"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/navigationDrawerAppTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/raleway_bold"
+                android:text="Weather\nFeed"
+                android:textSize="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/navigationDrawerAppLogo"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/navigationDrawerInner"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/week_day_layout"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline1">
+
+            <TextView
+                android:id="@+id/settingsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:padding="8dp"
+                android:text="Settings"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="22sp"
+                app:layout_constraintBottom_toTopOf="@+id/aboutUsTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/navigationDrawerInner" />
+
+            <TextView
+                android:id="@+id/aboutUsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:padding="8dp"
+                android:text="About Us"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="22sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/settingsTextView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.35" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.55" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -89,25 +192,24 @@
                         android:id="@+id/dayTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Monday"
-                        android:textSize="24dp"
-                        android:layout_marginTop="16dp"
                         android:layout_marginStart="32dp"
-                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="16dp"
+                        android:text="Monday"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="24dp"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:textColor="@color/colorPrimaryDark" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/dateTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="July 25, 3:14 PM"
-                        android:layout_marginTop="4dp"
                         android:layout_marginStart="32dp"
-                        app:layout_constraintTop_toBottomOf="@id/dayTextView"
+                        android:layout_marginTop="4dp"
+                        android:text="July 25, 3:14 PM"
+                        android:textColor="@color/colorPrimaryDark"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:textColor="@color/colorPrimaryDark" />
-
+                        app:layout_constraintTop_toBottomOf="@id/dayTextView" />
 
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -124,9 +226,9 @@
                             android:layout_gravity="center"
                             android:text="16°C"
                             android:textSize="52dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/currentWeatherMain"
@@ -135,8 +237,7 @@
                             android:text="Clear"
                             android:textSize="20sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tempTV"
-                            />
+                            app:layout_constraintTop_toBottomOf="@id/tempTV" />
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/weatherSymbolIV"
@@ -145,26 +246,24 @@
                             android:layout_gravity="center"
                             android:scaleType="fitCenter"
                             android:src="@drawable/cloud_temp"
-                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
-
+                            app:layout_constraintTop_toTopOf="parent" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
                     <TextView
                         android:id="@+id/currentWeatherDescription"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" Clear Sky Today"
                         android:layout_marginEnd="46dp"
                         android:layout_marginBottom="18dp"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        android:text=" Clear Sky Today"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        />
+                        app:layout_constraintEnd_toEndOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
-
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -172,37 +271,37 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="12dp"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/materialCardView1"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialCardView"
-                app:layout_constraintBottom_toTopOf="@+id/materialCardView1">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Weather Forecast"
-                    android:textSize="20sp"
                     android:layout_marginStart="20dp"
+                    android:text="Weather Forecast"
                     android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView1"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginTop="6dp"
+                android:layout_height="162dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginTop="6dp"
                 android:layout_marginEnd="16dp"
-                app:cardElevation="4dp"
+                android:layout_marginBottom="16dp"
+                android:padding="80dp"
                 app:cardBackgroundColor="@color/colorPrimary"
                 app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/weatherForecastL">
@@ -216,12 +315,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:elevation="2dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="12dp"
                         android:background="@drawable/week_day_layout"
+                        android:elevation="2dp"
                         android:orientation="vertical"
                         android:padding="5dp"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/weekDay2"
                         app:layout_constraintStart_toStartOf="parent"
@@ -256,12 +357,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:elevation="2dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="12dp"
                         android:background="@drawable/week_day_layout"
+                        android:elevation="2dp"
                         android:orientation="vertical"
                         android:padding="5dp"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/weekDay3"
                         app:layout_constraintStart_toEndOf="@+id/weekDay1"
@@ -296,12 +399,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:elevation="2dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="12dp"
                         android:background="@drawable/week_day_layout"
+                        android:elevation="2dp"
                         android:orientation="vertical"
                         android:padding="5dp"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/weekDay4"
                         app:layout_constraintStart_toEndOf="@+id/weekDay2"
@@ -336,12 +441,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:elevation="2dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="12dp"
                         android:background="@drawable/week_day_layout"
+                        android:elevation="2dp"
                         android:orientation="vertical"
                         android:padding="5dp"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/weekDay5"
                         app:layout_constraintStart_toEndOf="@+id/weekDay3"
@@ -376,13 +483,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="12dp"
                         android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:elevation="2dp"
+                        android:layout_marginBottom="12dp"
                         android:background="@drawable/week_day_layout"
+                        android:elevation="2dp"
                         android:orientation="vertical"
                         android:padding="5dp"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/weekDay4"
@@ -421,36 +530,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="12dp"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/materialCardView4"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialCardView1"
-                app:layout_constraintBottom_toTopOf="@+id/materialCardView4">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView1">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sun in Jammu"
-                    android:textSize="20sp"
                     android:layout_marginStart="20dp"
+                    android:text="Sun in Jammu"
                     android:textColor="@android:color/background_dark"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 app:cardBackgroundColor="@color/colorPrimary"
-                app:cardElevation="4dp"
                 app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/sunLayout">
@@ -510,23 +619,23 @@
 
                     <ImageView
                         android:id="@+id/sunriseImageView"
-                        android:src="@mipmap/sunrise_icon"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
+                        android:src="@mipmap/sunrise_icon"
                         app:layout_constraintBottom_toTopOf="@id/sunsetImageView"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/sunsetImageView"
-                        android:src="@mipmap/sunset_icon"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:layout_marginTop="4dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="16dp"
+                        android:src="@mipmap/sunset_icon"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/sunriseImageView" />
@@ -539,8 +648,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:cardElevation="0dp"
                 app:cardBackgroundColor="@color/colorPrimary"
+                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/materialCardView4">
@@ -548,50 +657,50 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:src="@mipmap/commasu"
                         android:layout_marginTop="4dp"
                         android:layout_marginEnd="8dp"
+                        android:src="@mipmap/commasu"
                         app:layout_constraintEnd_toStartOf="@id/weatherQuoteTV"
-                        app:layout_constraintTop_toTopOf="parent"
-                        />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/weatherQuoteTV"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:singleLine="false"
+                        android:layout_marginStart="64dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="64dp"
+                        android:layout_marginBottom="16dp"
+                        android:ellipsize="end"
+                        android:gravity="center"
                         android:lines="2"
                         android:maxLines="3"
-                        android:gravity="center"
-                        android:ellipsize="end"
-                        android:layout_marginBottom="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginStart="64dp"
-                        android:layout_marginEnd="64dp"
+                        android:singleLine="false"
                         android:text="Climate is what we expect, weather is what we get."
-                        />
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.card.MaterialCardView>
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                android:layout_marginTop="8dp"
-                app:cardElevation="4dp"
                 app:cardBackgroundColor="@color/colorPrimary"
                 app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/materialCardView6">
@@ -643,18 +752,18 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="8dp"
-                        android:elevation="2dp"
                         android:background="@drawable/bottom_for_detail_textview"
+                        android:elevation="2dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/detailViewFeelsLike">
 
                         <ImageView
                             android:id="@+id/windImageView"
-                            android:src="@mipmap/wind_icon"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_marginStart="16dp"
+                            android:src="@mipmap/wind_icon"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -691,18 +800,18 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="4dp"
                         android:layout_marginEnd="8dp"
-                        android:elevation="2dp"
                         android:background="@drawable/bottom_for_detail_textview"
+                        android:elevation="2dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/detailViewForWind">
 
                         <ImageView
                             android:id="@+id/humidityImageView"
-                            android:src="@mipmap/humidity_icon"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_marginStart="16dp"
+                            android:src="@mipmap/humidity_icon"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -738,19 +847,19 @@
                         android:layout_height="50dp"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="4dp"
-                        android:elevation="2dp"
                         android:layout_marginEnd="8dp"
                         android:background="@drawable/bottom_for_detail_textview"
+                        android:elevation="2dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/detailViewForHumidity">
 
                         <ImageView
                             android:id="@+id/pressureImageView"
-                            android:src="@mipmap/pressure_icon"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_marginStart="16dp"
+                            android:src="@mipmap/pressure_icon"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -787,18 +896,18 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="4dp"
                         android:layout_marginEnd="8dp"
-                        android:elevation="2dp"
                         android:background="@drawable/bottom_for_detail_textview"
+                        android:elevation="2dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/detailViewForPressure">
 
                         <ImageView
                             android:id="@+id/cloudsImageView"
-                            android:src="@mipmap/cloudiness"
                             android:layout_width="36dp"
                             android:layout_height="36dp"
                             android:layout_marginStart="16dp"
+                            android:src="@mipmap/cloudiness"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -834,19 +943,19 @@
                         android:layout_height="50dp"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="4dp"
-                        android:elevation="2dp"
                         android:layout_marginEnd="8dp"
                         android:background="@drawable/bottom_for_detail_textview"
+                        android:elevation="2dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/detailViewForClouds">
 
                         <ImageView
                             android:id="@+id/uvImageView"
-                            android:src="@mipmap/uv_icon"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_marginStart="16dp"
+                            android:src="@mipmap/uv_icon"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -884,8 +993,8 @@
                         android:layout_marginTop="4dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="16dp"
-                        android:elevation="2dp"
                         android:background="@drawable/bottom_for_detail_textview"
+                        android:elevation="2dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -893,10 +1002,10 @@
 
                         <ImageView
                             android:id="@+id/visibilityImageView"
-                            android:src="@mipmap/visibility_icon"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_marginStart="16dp"
+                            android:src="@mipmap/visibility_icon"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -936,20 +1045,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/materialCardView2"
                 app:layout_constraintBottom_toTopOf="@id/materialCardView5"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView2">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardView"
-                    app:cardCornerRadius="6dp"
-                    android:layout_margin="16dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    app:cardCornerRadius="6dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
 
                     <com.smarteist.autoimageslider.SliderView
                         android:id="@+id/imageSlider"
@@ -995,19 +1104,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="© 2020 Copyright: Rudra Kaniya "
-                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/madeInIndia"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintBottom_toTopOf="@id/madeInIndia"/>
+                        app:layout_constraintTop_toTopOf="parent" />
+
                     <TextView
                         android:id="@+id/madeInIndia"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Made with ❤ in India"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/madeByRudra"/>
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/madeByRudra" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

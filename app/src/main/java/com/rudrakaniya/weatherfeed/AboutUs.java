@@ -23,18 +23,15 @@ public class AboutUs extends AppCompatActivity {
 
         View aboutPage = new AboutPage(this)
                 .isRTL(false)
-                .enableDarkMode(true)
+                .enableDarkMode(false)
                 .setImage(R.drawable.about_icon_instagram)
                 .setDescription("Jai Mata Di")
                 .addItem(new Element().setTitle("Version 6.2"))
                 .addGroup("Connect with us")
-                .addEmail("elmehdi.sakout@gmail.com")
-                .addWebsite("https://mehdisakout.com/")
-                .addFacebook("the.medy")
-                .addYoutube("UCdPQtdWIsg7_pi4mrRu46vA")
+                .addEmail("info.lamecodes@gmail.com")
                 .addPlayStore("com.ideashower.readitlater.pro")
-                .addGitHub("medyo")
-                .addInstagram("medyo80")
+                .addGitHub("Rudrakaniya/WeatherFeed")
+                .addInstagram("rudra_xvv")
                 .addItem(getCopyRightsElement())
                 .create();
 
