@@ -3,8 +3,8 @@
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
     <Transition
-        motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@+id/start"
+        motion:constraintSetEnd="@+id/end"
         motion:duration="280">
 
 
@@ -13,6 +13,14 @@
 <!--            motion:touchAnchorId="@id/navigationDrawer"-->
 <!--            motion:touchAnchorSide="right"-->
 <!--        />-->
+
+
+<!--        <OnClick motion:targetId="@+id/img" />-->
+
+        <OnSwipe
+            motion:touchAnchorId="@+id/navigationDrawerSwipe"
+            motion:touchAnchorSide="left"
+            motion:dragDirection="dragRight" />
     </Transition>
 
 
@@ -25,10 +33,10 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toStartOf="parent"
             motion:layout_constraintTop_toBottomOf="@+id/textViewLayout"
-            motion:layout_editor_absoluteY="869dp" />
+            />
 
     </ConstraintSet>
-
+<!--    869dp-->
     <ConstraintSet android:id="@+id/end">
 
 

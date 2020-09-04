@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     final int NEW_CITY_CODE = 2;
 
     final String WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather";
-    final String APP_ID = "8ddd9e61267c0854ea4zzzzzzzzz4d8f0e349c731";
+    final String APP_ID = "8ddd9e61267c0854ea44d8f0e349c731";
     final String IMAGE_LOAD_LINK = "http://openweathermap.org/img/wn/";
 //    10d@2x.png
 
@@ -538,7 +538,7 @@ public class MainActivity extends AppCompatActivity {
         mSunriseTimeTextView.setText(currentTimeForSR.getHour() + ":" + currentTimeForSR.getMinutes() + " AM");
 
         CurrentTime currentTimeForSS = CurrentTime.getCurrentTime( CURRENT_TIMEZONE + weather.getSunset());
-        mSunsetTimeTextView.setText(currentTimeForSR.getHour() + ":" + currentTimeForSR.getMinutes() + " PM");
+        mSunsetTimeTextView.setText(currentTimeForSS.getHour() + ":" + currentTimeForSS.getMinutes() + " PM");
 
         mDetailViewTempTV.setText(weather.getTemperatureFeelsLike());
         mWindSpeedTV.setText(weather.getTemperatureFeelsLike() + " m/sec");

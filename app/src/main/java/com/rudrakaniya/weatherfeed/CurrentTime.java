@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class CurrentTime {
 
@@ -51,7 +52,7 @@ public class CurrentTime {
     public static CurrentTime getCurrentTime(long timeStamp) {
         CurrentTime doTime = new CurrentTime();
 
-        Calendar c = Calendar.getInstance();
+        Calendar c = Calendar.getInstance(Locale.ENGLISH);
 //        Date date = new java.util.Date(timeStamp*1000L);
         c.setTimeInMillis(timeStamp * 1000L);
 
