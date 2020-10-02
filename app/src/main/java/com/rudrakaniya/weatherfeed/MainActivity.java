@@ -254,50 +254,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-//    protected String getMonthName(String choice) {
-//
-//        switch (choice) {
-//
-//            case "01":
-//                return "January";
-//
-//            case "02":
-//                return "February";
-//
-//            case "03":
-//                return "March";
-//
-//            case "04":
-//                return "April";
-//
-//            case "05":
-//                return "May";
-//
-//            case "06":
-//                return "June";
-//
-//            case "07":
-//                return "July";
-//
-//            case "08":
-//                return "August";
-//
-//            case "09":
-//                return "September";
-//
-//            case "10":
-//                return "October";
-//
-//            case "11":
-//                return "November";
-//
-//            case "12":
-//                return "December";
-//
-//            default:
-//                return "Null";
-//        }
-//    }
 
 
     @Override
@@ -325,17 +281,6 @@ public class MainActivity extends AppCompatActivity {
         if (mUseLocation) getWeatherForCurrentLocation();
     }
 
-
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        Log.d("WeatherApp", "onResume() called");
-//        Intent myIntent = getIntent();
-//        String city = myIntent.getStringExtra("City");
-//        Log.d("WeatherApp", "  City name is = " + myIntent.getStringExtra("City"));
-//
-//
-//    }
 
     private void getWeatherForNewCity(String city) {
         Log.d(LOGCAT_TAG, "Getting weather for new city");
@@ -504,9 +449,11 @@ public class MainActivity extends AppCompatActivity {
         mCurrentWeatherDescriptionTV.setText(cap);
 
         CURRENT_TIMEZONE = Integer.parseInt(weather.getTimeZone());
-        CURRENT_TIME = Integer.parseInt(weather.getTimeZone()) + (  Integer.parseInt(weather.getCurrentDateAndTime()));
+        CURRENT_TIME =  (  Integer.parseInt(weather.getCurrentDateAndTime()));
 
-        CurrentTime currentTime = CurrentTime.getCurrentTime(CURRENT_TIME);
+//        CURRENT_TIME = Integer.parseInt(weather.getTimeZone()) + (  Integer.parseInt(weather.getCurrentDateAndTime()));
+
+        CurrentTime currentTime = CurrentTime.getCurrentTime( CURRENT_TIME);
 
         mDayTextView.setText(currentTime.getDay());
         String dateString = currentTime.getMonth() + " " + currentTime.getDate() + ", " + currentTime.getYear()+ " "+ currentTime.getHour() + " PM";
@@ -534,10 +481,10 @@ public class MainActivity extends AppCompatActivity {
         mWeekDay4TempTV.setText(weather.getM4ForecastTemperature());
         mWeekDay5TempTV.setText(weather.getM5ForecastTemperature());
 
-        CurrentTime currentTimeForSR = CurrentTime.getCurrentTime( CURRENT_TIMEZONE + weather.getSunrise());
+        CurrentTime currentTimeForSR = CurrentTime.getCurrentTime(  weather.getSunrise());
         mSunriseTimeTextView.setText(currentTimeForSR.getHour() + ":" + currentTimeForSR.getMinutes() + " AM");
 
-        CurrentTime currentTimeForSS = CurrentTime.getCurrentTime( CURRENT_TIMEZONE + weather.getSunset());
+        CurrentTime currentTimeForSS = CurrentTime.getCurrentTime(  weather.getSunset());
         mSunsetTimeTextView.setText(currentTimeForSS.getHour() + ":" + currentTimeForSS.getMinutes() + " PM");
 
         mDetailViewTempTV.setText(weather.getTemperatureFeelsLike());

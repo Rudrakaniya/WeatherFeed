@@ -59,7 +59,7 @@ public class CurrentTime {
 
 
         //Get date and time, don't get excited lol!! its not a reallife wali date. hold your horses kido!!
-        Date currentTime = Calendar.getInstance().getTime();
+        Date currentTime = new Date(timeStamp * 1000);
 
 
         SimpleDateFormat df = new SimpleDateFormat("MM");
@@ -91,6 +91,8 @@ public class CurrentTime {
         SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
         String dayString = sdf.format(currentTime.getTime());
         Log.d(LOCAL_TAG, "getCurrentDay: " + dayString);
+        Log.d(LOCAL_TAG, "getCurrentDay: Time is " + doTime.mHour + ":" + doTime.mMinutes);
+
         doTime.mDay = dayString;
 
         switch (dayString){
