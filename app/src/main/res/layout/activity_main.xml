@@ -198,6 +198,20 @@
             app:layout_constraintGuide_percent="0.55" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <com.google.android.material.progressindicator.ProgressIndicator
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.ProgressIndicator.Circular.Indeterminate"
+        app:indicatorColors="@array/progress_colors"
+        app:circularRadius="20dp"
+        app:growMode="incoming"
+        android:elevation="32dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <FrameLayout
         android:id="@+id/frameLayout"
@@ -588,6 +602,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/materialCardView1">
 
                     <TextView
+                        android:id="@+id/sunLayoutTV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
@@ -628,7 +643,7 @@
                             android:layout_marginTop="16dp"
                             android:layout_marginBottom="4dp"
                             android:text="Sunrise"
-                            android:textSize="20sp"
+                            android:textSize="18sp"
                             app:layout_constraintBottom_toTopOf="@+id/sunsetTextView"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -641,7 +656,7 @@
                             android:layout_marginTop="4dp"
                             android:layout_marginBottom="16dp"
                             android:text="Sunset"
-                            android:textSize="20sp"
+                            android:textSize="18sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/sunriseTextView" />
@@ -729,6 +744,7 @@
                             android:layout_marginBottom="16dp"
                             android:ellipsize="end"
                             android:gravity="center"
+                            android:textSize="15sp"
                             android:lines="2"
                             android:maxLines="3"
                             android:singleLine="false"
@@ -769,7 +785,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="16dp"
                             android:text="Weather today in Jammu, IN"
-                            android:textSize="22sp"
+                            android:textSize="20sp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -812,8 +828,8 @@
 
                             <ImageView
                                 android:id="@+id/windImageView"
-                                android:layout_width="32dp"
-                                android:layout_height="32dp"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
                                 android:layout_marginStart="16dp"
                                 android:src="@mipmap/wind_icon"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -826,7 +842,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="12dp"
                                 android:text="Wind"
-                                android:textSize="20sp"
+                                android:textSize="18sp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toEndOf="@id/windImageView"
                                 app:layout_constraintTop_toTopOf="parent" />
@@ -837,7 +853,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="16dp"
                                 android:text="5 km/h"
-                                android:textSize="20sp"
+                                android:textSize="18sp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
@@ -860,8 +876,8 @@
 
                             <ImageView
                                 android:id="@+id/humidityImageView"
-                                android:layout_width="32dp"
-                                android:layout_height="32dp"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
                                 android:layout_marginStart="16dp"
                                 android:src="@mipmap/humidity_icon"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -874,7 +890,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="12dp"
                                 android:text="Humidity"
-                                android:textSize="20sp"
+                                android:textSize="18sp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toEndOf="@id/humidityImageView"
                                 app:layout_constraintTop_toTopOf="parent" />
@@ -885,7 +901,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="16dp"
                                 android:text="79%"
-                                android:textSize="20sp"
+                                android:textSize="18sp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
@@ -908,8 +924,8 @@
 
                             <ImageView
                                 android:id="@+id/pressureImageView"
-                                android:layout_width="32dp"
-                                android:layout_height="32dp"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
                                 android:layout_marginStart="16dp"
                                 android:src="@mipmap/pressure_icon"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -922,7 +938,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="12dp"
                                 android:text="Pressure"
-                                android:textSize="20sp"
+                                android:textSize="18sp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toEndOf="@id/pressureImageView"
                                 app:layout_constraintTop_toTopOf="parent" />
@@ -933,7 +949,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="16dp"
                                 android:text="99.4 hPa"
-                                android:textSize="20sp"
+                                android:textSize="18sp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
@@ -956,8 +972,8 @@
 
                             <ImageView
                                 android:id="@+id/cloudsImageView"
-                                android:layout_width="36dp"
-                                android:layout_height="36dp"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
                                 android:layout_marginStart="16dp"
                                 android:src="@mipmap/cloudiness"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -970,7 +986,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="12dp"
                                 android:text="Cloudiness"
-                                android:textSize="20sp"
+                                android:textSize="18sp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toEndOf="@id/cloudsImageView"
                                 app:layout_constraintTop_toTopOf="parent" />
@@ -981,7 +997,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="16dp"
                                 android:text="40%"
-                                android:textSize="20sp"
+                                android:textSize="18sp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
@@ -1004,8 +1020,8 @@
 
                             <ImageView
                                 android:id="@+id/uvImageView"
-                                android:layout_width="32dp"
-                                android:layout_height="32dp"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
                                 android:layout_marginStart="16dp"
                                 android:src="@mipmap/uv_icon"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -1018,7 +1034,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="12dp"
                                 android:text="UV Index"
-                                android:textSize="20sp"
+                                android:textSize="18sp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toEndOf="@id/uvImageView"
                                 app:layout_constraintTop_toTopOf="parent" />
@@ -1029,7 +1045,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="16dp"
                                 android:text="12.23"
-                                android:textSize="20sp"
+                                android:textSize="18sp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
@@ -1054,8 +1070,8 @@
 
                             <ImageView
                                 android:id="@+id/visibilityImageView"
-                                android:layout_width="32dp"
-                                android:layout_height="32dp"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
                                 android:layout_marginStart="16dp"
                                 android:src="@mipmap/visibility_icon"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -1068,7 +1084,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="12dp"
                                 android:text="Visibility"
-                                android:textSize="20sp"
+                                android:textSize="18sp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toEndOf="@id/visibilityImageView"
                                 app:layout_constraintTop_toTopOf="parent" />
@@ -1079,7 +1095,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="16dp"
                                 android:text="6000m"
-                                android:textSize="20sp"
+                                android:textSize="18sp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />

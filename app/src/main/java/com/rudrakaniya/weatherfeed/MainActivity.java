@@ -22,9 +22,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.motion.widget.MotionLayout;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.progressindicator.ProgressIndicator;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -65,13 +67,20 @@ public class MainActivity extends AppCompatActivity {
     final long MIN_TIME = 5000;
     final float MIN_DISTANCE = 1000;
 
+    // Constraint layout
+    ConstraintLayout mScrollViewConstraintLayout;
+
+    //Progress bar
+    ProgressIndicator mProgressBar;
+
     // ImageSlider
     // Image Slider Using https://github.com/smarteist/Android-Image-Slider
     SliderView sliderView;
     private SliderAdapterExample adapter;
     private int SLIDER_COUNT = 4;
 
-
+    // Sunset, Sunrise layout
+    TextView mSunLayoutTV;
 
     // Navigation drawer
     TextView mSettingsNav;
@@ -105,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
     LocationManager mLocationManager;
     LocationListener mLocationListener;
     String city;
+    Integer mProgressBar_Boo = 1;
 
 
     public static final String MyPREFERENCES = "MyPrefs";
@@ -115,6 +125,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Constraint layout
+        mScrollViewConstraintLayout = findViewById(R.id.scrollViewConstraintLayout);
+        mScrollViewConstraintLayout.setVisibility(View.GONE);
+
+        //Progress bar
+        mProgressBar = findViewById(R.id.progress_bar);
+        if (mProgressBar_Boo == 1){
+            mProgressBar.setVisibility(View.VISIBLE);
+        }else {
+            mProgressBar.setVisibility(View.GONE);
+        }
+        mProgressBar_Boo = 0;
+//        mProgressBar.show();
+
 
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         city = sharedPreferences.getString("cityName", "");
@@ -124,6 +148,8 @@ public class MainActivity extends AppCompatActivity {
         mSettingsNav = findViewById(R.id.settingsTextView);
         mAboutUsNav = findViewById(R.id.aboutUsTextView);
 
+        // Sunset, Sunrise layout
+        mSunLayoutTV = findViewById(R.id.sunLayoutTV);
 
         // Linking the elements in the layout to Java code.
         mCityLabel = findViewById(R.id.locationTV);
@@ -442,6 +468,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateUI(WeatherDataModel weather) {
         mCityLabel.setText(weather.getCity());
+        mSunLayoutTV.setText("Sun in " + weather.getCity());
         mTemperatureLabel.setText(weather.getTemperature());
 
         mCurrentWeatherMainTV.setText(weather.getCurrentWeatherMain());
@@ -500,6 +527,10 @@ public class MainActivity extends AppCompatActivity {
         Glide.with(this).load(IMAGE_LOAD_LINK + weather.getM3ForecastIcon() + "@2x.png").into(mWeekDay3IV);
         Glide.with(this).load(IMAGE_LOAD_LINK + weather.getM4ForecastIcon() + "@2x.png").into(mWeekDay4IV);
         Glide.with(this).load(IMAGE_LOAD_LINK + weather.getM5ForecastIcon() + "@2x.png").into(mWeekDay5IV);
+
+        mProgressBar.setVisibility(View.GONE);
+        mProgressBar_Boo = 0;
+        mScrollViewConstraintLayout.setVisibility(View.VISIBLE);
 
 //        Picasso.get().load(IMAGE_LOAD_LINK + weather.getM2ForecastIcon() + "@2x.png").into(mWeekDay2IV);
 //        Picasso.get().load(IMAGE_LOAD_LINK + weather.getM3ForecastIcon() + "@2x.png").into(mWeekDay3IV);

@@ -7,4 +7,5 @@
     <color name="colorWhiteGrey">#f7f7f7</color>
     <color name="colorDarkGrey">#ededed</color>
     <color name="colorPink">#fb3b60</color>
+    <color name="colorRed">#ff0000</color>
 </resources>
