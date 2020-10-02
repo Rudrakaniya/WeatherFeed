@@ -56,28 +56,6 @@ public class CurrentTime {
 //        Date date = new java.util.Date(timeStamp*1000L);
         c.setTimeInMillis(timeStamp * 1000L);
 
-        int dayNum = c.get(Calendar.DAY_OF_WEEK);
-        dayNum -= 2;
-        Log.d(LOCAL_TAG, "getCurrentTime: dayNum  " + dayNum);
-        Days day = Days.values()[dayNum];
-        doTime.mDay = day.toString();
-
-        String upcommingDays[] = new String[5];
-
-        for (int i = 0; i < 5; ++i) {
-            dayNum++;
-            if (dayNum >= 7) {
-                dayNum %= 7;
-            }
-            day = Days.values()[dayNum];
-            upcommingDays[i] = day.toString();
-        }
-
-        doTime.mNextDay1 = upcommingDays[0];
-        doTime.mNextDay2 = upcommingDays[1];
-        doTime.mNextDay3 = upcommingDays[2];
-        doTime.mNextDay4 = upcommingDays[3];
-        doTime.mNextDay5 = upcommingDays[4];
 
 
         //Get date and time, don't get excited lol!! its not a reallife wali date. hold your horses kido!!
@@ -104,6 +82,77 @@ public class CurrentTime {
 
         df = new SimpleDateFormat("yyyy");
         doTime.mYear = df.format(currentTime.getTime());
+
+
+        // Getting the days
+
+        int dayNum = c.get(Calendar.DAY_OF_WEEK);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
+        String dayString = sdf.format(currentTime.getTime());
+        Log.d(LOCAL_TAG, "getCurrentDay: " + dayString);
+        doTime.mDay = dayString;
+
+        switch (dayString){
+
+            case "Monday":
+                dayNum = 1;
+                break;
+
+            case "Tuesday":
+                dayNum = 2;
+                break;
+
+            case "Wednesday":
+                dayNum = 3;
+                break;
+
+            case "Thursday":
+                dayNum = 4;
+                break;
+
+            case "Friday":
+                dayNum = 5;
+                break;
+
+            case "Saturday":
+                dayNum = 6;
+                break;
+
+            case "Sunday":
+                dayNum = 7;
+                break;
+
+        }
+
+
+//        dayNum -= 2;
+//        Log.d(LOCAL_TAG, "getCurrentTime: dayNum  " + dayNum);
+        Days day = Days.values()[dayNum];
+
+
+
+
+        String upcommingDays[] = new String[5];
+
+        for (int i = 0; i < 5; ++i) {
+            dayNum++;
+            if (dayNum >= 7) {
+                dayNum %= 7;
+            }
+            day = Days.values()[dayNum];
+            upcommingDays[i] = day.toString();
+        }
+
+        doTime.mNextDay1 = upcommingDays[0];
+        doTime.mNextDay2 = upcommingDays[1];
+        doTime.mNextDay3 = upcommingDays[2];
+        doTime.mNextDay4 = upcommingDays[3];
+        doTime.mNextDay5 = upcommingDays[4];
+
+
+
+
 
         return doTime;
     }
