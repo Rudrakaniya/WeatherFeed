@@ -1,6 +1,7 @@
 package com.rudrakaniya.weatherfeed;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,11 +11,13 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -71,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     ConstraintLayout mScrollViewConstraintLayout;
 
     //Progress bar
-    ProgressIndicator mProgressBar;
+    TextView mProgressBar;
 
     // ImageSlider
     // Image Slider Using https://github.com/smarteist/Android-Image-Slider
@@ -131,14 +134,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Progress bar
         mProgressBar = findViewById(R.id.progress_bar);
-        if (mProgressBar_Boo == 1){
-            mProgressBar.setVisibility(View.VISIBLE);
-        }else {
-            mProgressBar.setVisibility(View.GONE);
-        }
-        mProgressBar_Boo = 0;
-//        mProgressBar.show();
-
+        mProgressBar.setVisibility(View.VISIBLE);
 
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         city = sharedPreferences.getString("cityName", "");
@@ -278,6 +274,9 @@ public class MainActivity extends AppCompatActivity {
                 mUseLocation = false;
             }
         });
+
+//         getWeatherForCurrentLocation();
+
     }
 
 
@@ -320,6 +319,7 @@ public class MainActivity extends AppCompatActivity {
     private void getWeatherForCurrentLocation() {
         Log.d(LOGCAT_TAG, "Getting weather for current location");
         mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
         mLocationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
@@ -337,6 +337,7 @@ public class MainActivity extends AppCompatActivity {
                 params.put("lon", longitude);
                 params.put("appid", APP_ID);
                 letsDoSomeNetworking(params);
+
             }
 
             @Override
@@ -383,6 +384,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void letsDoSomeNetworking(RequestParams params) {
+        Log.d(LOGCAT_TAG, "Entered letsDoSomeNetworking");
 
         AsyncHttpClient client = new AsyncHttpClient();
 
@@ -410,6 +412,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+
     }
 
 
@@ -450,6 +453,8 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(LOGCAT_TAG, "Success! JSON: " + response.toString());
                 WeatherDataModelForOCAPI weatherDataForOCAPI = WeatherDataModelForOCAPI.fromJson(response);
                 updateUIForOCAPI(weatherDataForOCAPI);
+               mProgressBar.setVisibility(View.GONE);
+               mScrollViewConstraintLayout.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -528,15 +533,12 @@ public class MainActivity extends AppCompatActivity {
         Glide.with(this).load(IMAGE_LOAD_LINK + weather.getM4ForecastIcon() + "@2x.png").into(mWeekDay4IV);
         Glide.with(this).load(IMAGE_LOAD_LINK + weather.getM5ForecastIcon() + "@2x.png").into(mWeekDay5IV);
 
-        mProgressBar.setVisibility(View.GONE);
-        mProgressBar_Boo = 0;
-        mScrollViewConstraintLayout.setVisibility(View.VISIBLE);
+
 
 //        Picasso.get().load(IMAGE_LOAD_LINK + weather.getM2ForecastIcon() + "@2x.png").into(mWeekDay2IV);
 //        Picasso.get().load(IMAGE_LOAD_LINK + weather.getM3ForecastIcon() + "@2x.png").into(mWeekDay3IV);
 //        Picasso.get().load(IMAGE_LOAD_LINK + weather.getM4ForecastIcon() + "@2x.png").into(mWeekDay4IV);
 //        Picasso.get().load(IMAGE_LOAD_LINK + weather.getM5ForecastIcon() + "@2x.png").into(mWeekDay5IV);
-
 
     }
 

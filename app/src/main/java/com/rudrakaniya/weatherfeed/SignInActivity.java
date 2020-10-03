@@ -20,13 +20,21 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class SignInActivity extends AppCompatActivity {
@@ -138,6 +146,42 @@ public class SignInActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(LOGCAT_TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+
+
+                            // Adding user data to Firebase
+                            GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(SignInActivity.this);
+
+                            Log.d(LOGCAT_TAG, "onComplete: name " + signInAccount.getDisplayName());
+                            Log.d(LOGCAT_TAG, "onComplete: email " + signInAccount.getEmail());
+                            Log.d(LOGCAT_TAG, "onComplete: photoUrl " + signInAccount.getPhotoUrl());
+                            Log.d(LOGCAT_TAG, "onComplete: Current user " + user.getUid());
+
+                            Map<String, Object> map = new HashMap<>();
+                            map.put("name", signInAccount.getDisplayName());
+                            map.put("email", signInAccount.getEmail());
+                            map.put("photoUrl", signInAccount.getPhotoUrl().toString());
+                            map.put("userId", user.getUid());
+                            map.put("timeOfCreation", new Timestamp(new Date()));
+
+
+
+                            // Adding the current user to the Users collection
+                            FirebaseFirestore.getInstance().collection("users")
+                                    .document(user.getUid())
+                                    .set(map)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Log.d(LOGCAT_TAG, "onSuccess: Task was Successful");
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.d(LOGCAT_TAG, "onFailure: Task Failed");
+                                        }
+                                    });
+
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intent);
                             finish();
@@ -153,4 +197,5 @@ public class SignInActivity extends AppCompatActivity {
                     }
                 });
     }
+
 }
