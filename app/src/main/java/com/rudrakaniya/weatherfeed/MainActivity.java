@@ -74,7 +74,8 @@ public class MainActivity extends AppCompatActivity {
     ConstraintLayout mScrollViewConstraintLayout;
 
     //Progress bar
-    TextView mProgressBar;
+    ProgressIndicator mProgressBar;
+    TextView mProgressBarTV;
 
     // ImageSlider
     // Image Slider Using https://github.com/smarteist/Android-Image-Slider
@@ -135,6 +136,8 @@ public class MainActivity extends AppCompatActivity {
         //Progress bar
         mProgressBar = findViewById(R.id.progress_bar);
         mProgressBar.setVisibility(View.VISIBLE);
+        mProgressBarTV = findViewById(R.id.progress_barTV);
+        mProgressBarTV.setVisibility(View.VISIBLE);
 
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         city = sharedPreferences.getString("cityName", "");
@@ -454,6 +457,7 @@ public class MainActivity extends AppCompatActivity {
                 WeatherDataModelForOCAPI weatherDataForOCAPI = WeatherDataModelForOCAPI.fromJson(response);
                 updateUIForOCAPI(weatherDataForOCAPI);
                mProgressBar.setVisibility(View.GONE);
+                mProgressBarTV.setVisibility(View.GONE);
                mScrollViewConstraintLayout.setVisibility(View.VISIBLE);
             }
 

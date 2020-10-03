@@ -81,9 +81,9 @@ public class Settings extends AppCompatActivity {
 
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
                 intent.setData(Uri.parse("mailto:"));
-                intent.putExtra(Intent.EXTRA_EMAIL  , new String[] { "me@somewhere.com" });
-                intent.putExtra(Intent.EXTRA_SUBJECT, "My subject");
-                intent.putExtra(Intent.EXTRA_TEXT, "My subject");
+                intent.putExtra(Intent.EXTRA_EMAIL  , new String[] { "rudra.kaniya.rk@gmail.com" });
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Feedback - Weather Feed App");
+                intent.putExtra(Intent.EXTRA_TEXT, "Hi, Please feel free to share your thoughts, I am seeking for constructive feedback from you :)");
                 startActivity(Intent.createChooser(intent, "Email via..."));
 
             }

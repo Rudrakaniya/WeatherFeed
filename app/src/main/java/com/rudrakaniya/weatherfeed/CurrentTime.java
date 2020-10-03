@@ -130,6 +130,9 @@ public class CurrentTime {
 
 //        dayNum -= 2;
 //        Log.d(LOCAL_TAG, "getCurrentTime: dayNum  " + dayNum);
+        if (dayNum > 6) {
+            dayNum %= 7;
+        }
         Days day = Days.values()[dayNum];
 
 
@@ -139,7 +142,7 @@ public class CurrentTime {
 
         for (int i = 0; i < 5; ++i) {
             dayNum++;
-            if (dayNum >= 7) {
+            if (dayNum > 6) {
                 dayNum %= 7;
             }
             day = Days.values()[dayNum];

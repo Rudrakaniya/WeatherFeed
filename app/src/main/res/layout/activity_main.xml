@@ -221,14 +221,39 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-                <TextView
+
+<!--                <com.google.android.material.progressindicator.ProgressIndicator-->
+<!--                    android:id="@+id/progress_bar"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:gravity="center"-->
+<!--                    android:visibility="visible"-->
+<!--                    />-->
+                <com.google.android.material.progressindicator.ProgressIndicator
                     android:id="@+id/progress_bar"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Loading...."
-                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.ProgressIndicator.Circular.Indeterminate"
+                    app:indicatorColors="@array/progress_colors"
+                    app:circularRadius="20dp"
+                    app:growMode="incoming"
+                    android:elevation="32dp"
                     android:visibility="visible"
+                    android:layout_marginTop="150dp"
+                    android:layout_gravity="center"
                     />
+
+                <TextView
+                    android:id="@+id/progress_barTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Breathe in, Breathe out!!"
+                    android:elevation="32dp"
+                    android:textSize="18dp"
+                    android:visibility="visible"
+                    android:layout_marginTop="15dp"
+                    android:layout_gravity="center"/>
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/scrollViewConstraintLayout"
                     android:visibility="gone"
