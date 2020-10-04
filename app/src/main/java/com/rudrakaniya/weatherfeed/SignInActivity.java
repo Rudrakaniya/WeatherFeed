@@ -147,7 +147,7 @@ public class SignInActivity extends AppCompatActivity {
                             Log.d(LOGCAT_TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
 
-
+//                            user.getEmail();
                             // Adding user data to Firebase
                             GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(SignInActivity.this);
 

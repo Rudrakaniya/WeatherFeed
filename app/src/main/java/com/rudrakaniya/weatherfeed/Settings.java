@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Settings extends AppCompatActivity {
     ImageView backButton;
@@ -30,10 +31,15 @@ public class Settings extends AppCompatActivity {
     TextView mProvideFeedbackTV;
     TextView mSignOutEmailTV;
 
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        mAuth = FirebaseAuth.getInstance();
+
 
         backButton = findViewById(R.id.backButton);
         mThemeTV = findViewById(R.id.themeTV);
@@ -46,6 +52,9 @@ public class Settings extends AppCompatActivity {
         mNotificationOptionsTVBtn = findViewById(R.id.notificationOptionsTVBtn);
         mFeedbackTVBtn = findViewById(R.id.feedbackTVBtn);
         mSignOutTVBtn = findViewById(R.id.signOutTVBtn);
+
+        FirebaseUser user = mAuth.getCurrentUser();
+        mSignOutEmailTV.setText(user.getEmail());
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
