@@ -9,7 +9,7 @@
 # Java class files
 *.class
 
-/google-services.json
+google-services.json
 # generated files
 bin/
 gen/
