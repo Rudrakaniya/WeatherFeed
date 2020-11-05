@@ -15,11 +15,19 @@
       },
       "oauth_client": [
         {
-          "client_id": "324618162385-88t084chsmtgp85ogo4ba2ud65auq687.apps.googleusercontent.com",
+          "client_id": "324618162385-qhr6r67inkb5j9bkr2kjmeuqbv3h6aop.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.rudrakaniya.weatherfeed",
-            "certificate_hash": "866d8b62c46be0f6803393b14a9b2f5c96241dea"
+            "certificate_hash": "27fee8962a3faafeef465acc66ee7e4f9f5c1708"
+          }
+        },
+        {
+          "client_id": "324618162385-pgev0p6ishu7s8v2gaeqlunupr703bre.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rudrakaniya.weatherfeed",
+            "certificate_hash": "275f92444a8f146a327a6033dc55faa4ed770d96"
           }
         },
         {
