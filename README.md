@@ -1,4 +1,16 @@
-# WeatherFeed 
+<p align="center">
+    <a href="https://play.google.com/store/apps/details?id=com.rudrakaniya.weatherfeed" target="_blank" rel="noopener noreferrer">
+        <img src="https://i.imgur.com/uG6cIjc.png" alt="logo" width="150px"/>
+    </a>
+</p>
+
+<p align="center">
+    <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="license">
+  <img src="https://travis-ci.com/dunwu/blog.svg?branch=master" alt="build">
+</p>
+
+<h1 align="center">WeatherFeed</h1>
+
 > Weather app using openweathermap.org's api and Implementing Motion Layout for a better user interface, chaos :)
 
 A simple yet fully-featured real-time weather forecast application, using openweathermap.org's API.
