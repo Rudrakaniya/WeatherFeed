@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://play.google.com/store/apps/details?id=com.rudrakaniya.weatherfeed" target="_blank" rel="noopener noreferrer">
-        <img src="https://i.imgur.com/uG6cIjc.png" alt="logo" width="150px"/>
+        <img src="https://i.imgur.com/uG6cIjc.png" alt="logo" width="92px"/>
     </a>
 </p>
 
