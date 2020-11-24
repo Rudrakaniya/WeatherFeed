@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     final int NEW_CITY_CODE = 2;
 
     final String WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather";
-        final String APP_ID = "API_KEY_GOES_HERE";
+        final String APP_ID = "8ddd9e61267c0854ea44d8f0e349c731";
     final String IMAGE_LOAD_LINK = "http://openweathermap.org/img/wn/";
 //    10d@2x.png
 
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
     TextView mDetailViewLocationTV, mDetailViewTempTV, mWindSpeedTV, mHumidityPercentTV, mPressureHPATV, mCloudinessTV, mUvIndexTV, mVisibilityRangeTV;
 
     // Location provider
-    final String LOCATION_PROVIDER = LocationManager.GPS_PROVIDER;
+    final String LOCATION_PROVIDER = LocationManager.NETWORK_PROVIDER;
     LocationManager mLocationManager;
     LocationListener mLocationListener;
     String city;
@@ -429,7 +429,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("WeatherApp", "onRequestPermissionsResult(): Permission granted!");
                 getWeatherForCurrentLocation();
             } else {
-                Log.d("WeatherApp", "Permission denied =( ");
+                Log.d("WeatherApp", "Permission denied =()");
             }
         }
 
